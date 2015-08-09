@@ -29,6 +29,8 @@
 				<Option createStaticLib="1" />
 				<Compiler>
 					<Add option="-O2" />
+					<Add option="-std=c++11" />
+					<Add option="-fPIC" />
 					<Add directory="include" />
 					<Add directory="src" />
 				</Compiler>
@@ -52,6 +54,8 @@
 		<Unit filename="src/RandomUniformMT.h" />
 		<Unit filename="src/RandomVarEnv.cpp" />
 		<Unit filename="src/RandomVarEnv.h" />
+		<Unit filename="src/RandomVarInt.cpp" />
+		<Unit filename="src/RandomVarInt.h" />
 		<Unit filename="src/SingletonHolder.h" />
 		<Unit filename="src/headerForSwig.h" />
 		<Extensions>

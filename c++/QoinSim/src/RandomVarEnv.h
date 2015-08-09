@@ -27,7 +27,8 @@ public:
 protected:
   inline explicit RandomVarEnv(){}
   virtual ~RandomVarEnv(){
-    m_pInstance = 0; }
+    delete m_pInstance;
+  }
 
 private:
   inline explicit RandomVarEnv(RandomVarEnv const&){}
@@ -39,24 +40,6 @@ private:
 private:
   std::map<Random::ERandomVarType, std::unique_ptr<Random>> m_randomVars;
 };
-
-RandomVarEnv* RandomVarEnv::m_pInstance = 0;
-
-const std::map<std::string, Random::ERandomVarType>
-RandomVarEnv::s_typeMap = {
-{"UniformMT", Random::E_UniformMT},
-{"UniformSobol366", Random::E_UniformSobol366},
-{"UniformSobol1111", Random::E_UniformSobol1111}
-};
-
-RandomVarEnv&
-RandomVarEnv::instance(){
-  if (!m_pInstance)
-    m_pInstance = new RandomVarEnv;
-
-  return *m_pInstance;
-}
-
 }
 
 #endif // RANDOMVARENV_H

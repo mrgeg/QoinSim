@@ -15,20 +15,20 @@ if version_info >= (2,6,0):
         import imp
         fp = None
         try:
-            fp, pathname, description = imp.find_module('_RandomUniformMT', [dirname(__file__)])
+            fp, pathname, description = imp.find_module('_qoinSim', [dirname(__file__)])
         except ImportError:
-            import _RandomUniformMT
-            return _RandomUniformMT
+            import _qoinSim
+            return _qoinSim
         if fp is not None:
             try:
-                _mod = imp.load_module('_RandomUniformMT', fp, pathname, description)
+                _mod = imp.load_module('_qoinSim', fp, pathname, description)
             finally:
                 fp.close()
             return _mod
-    _RandomUniformMT = swig_import_helper()
+    _qoinSim = swig_import_helper()
     del swig_import_helper
 else:
-    import _RandomUniformMT
+    import _qoinSim
 del version_info
 try:
     _swig_property = property
@@ -69,22 +69,21 @@ except AttributeError:
     _newclass = 0
 
 
-class RandomUniformMT(_object):
+class RandomVarInt(_object):
     __swig_setmethods__ = {}
-    __setattr__ = lambda self, name, value: _swig_setattr(self, RandomUniformMT, name, value)
+    __setattr__ = lambda self, name, value: _swig_setattr(self, RandomVarInt, name, value)
     __swig_getmethods__ = {}
-    __getattr__ = lambda self, name: _swig_getattr(self, RandomUniformMT, name)
+    __getattr__ = lambda self, name: _swig_getattr(self, RandomVarInt, name)
     __repr__ = _swig_repr
     def __init__(self): 
-        this = _RandomUniformMT.new_RandomUniformMT()
+        this = _qoinSim.new_RandomVarInt()
         try: self.this.append(this)
         except: self.this = this
-    __swig_destroy__ = _RandomUniformMT.delete_RandomUniformMT
+    __swig_destroy__ = _qoinSim.delete_RandomVarInt
     __del__ = lambda self : None;
-    def reset(self): return _RandomUniformMT.RandomUniformMT_reset(self)
-    def gen(self, *args): return _RandomUniformMT.RandomUniformMT_gen(self, *args)
-RandomUniformMT_swigregister = _RandomUniformMT.RandomUniformMT_swigregister
-RandomUniformMT_swigregister(RandomUniformMT)
+    def getRandom(self, *args): return _qoinSim.RandomVarInt_getRandom(self, *args)
+RandomVarInt_swigregister = _qoinSim.RandomVarInt_swigregister
+RandomVarInt_swigregister(RandomVarInt)
 
 # This file is compatible with both classic and new-style classes.
 

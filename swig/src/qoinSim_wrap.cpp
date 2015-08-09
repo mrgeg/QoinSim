@@ -2934,7 +2934,7 @@ SWIG_Python_NonDynamicSetAttr(PyObject *obj, PyObject *name, PyObject *value) {
 
 /* -------- TYPES TABLE (BEGIN) -------- */
 
-#define SWIGTYPE_p_RandomUniformMT swig_types[0]
+#define SWIGTYPE_p_RandomVarInt swig_types[0]
 #define SWIGTYPE_p_char swig_types[1]
 #define SWIGTYPE_p_double swig_types[2]
 static swig_type_info *swig_types[4];
@@ -2951,16 +2951,16 @@ static swig_module_info swig_module = {swig_types, 3, 0, 0, 0, 0};
 #endif
 
 /*-----------------------------------------------
-              @(target):= _RandomUniformMT.so
+              @(target):= _qoinSim.so
   ------------------------------------------------*/
 #if PY_VERSION_HEX >= 0x03000000
-#  define SWIG_init    PyInit__RandomUniformMT
+#  define SWIG_init    PyInit__qoinSim
 
 #else
-#  define SWIG_init    init_RandomUniformMT
+#  define SWIG_init    init_qoinSim
 
 #endif
-#define SWIG_name    "_RandomUniformMT"
+#define SWIG_name    "_qoinSim"
 
 #define SWIGVERSION 0x020011 
 #define SWIG_VERSION SWIGVERSION
@@ -3035,7 +3035,99 @@ namespace swig {
 }
 
 
-#include "RandomUniformMT.h"
+#include "headerForSwig.h"
+
+
+SWIGINTERN swig_type_info*
+SWIG_pchar_descriptor(void)
+{
+  static int init = 0;
+  static swig_type_info* info = 0;
+  if (!init) {
+    info = SWIG_TypeQuery("_p_char");
+    init = 1;
+  }
+  return info;
+}
+
+
+SWIGINTERN int
+SWIG_AsCharPtrAndSize(PyObject *obj, char** cptr, size_t* psize, int *alloc)
+{
+#if PY_VERSION_HEX>=0x03000000
+  if (PyUnicode_Check(obj))
+#else  
+  if (PyString_Check(obj))
+#endif
+  {
+    char *cstr; Py_ssize_t len;
+#if PY_VERSION_HEX>=0x03000000
+    if (!alloc && cptr) {
+        /* We can't allow converting without allocation, since the internal
+           representation of string in Python 3 is UCS-2/UCS-4 but we require
+           a UTF-8 representation.
+           TODO(bhy) More detailed explanation */
+        return SWIG_RuntimeError;
+    }
+    obj = PyUnicode_AsUTF8String(obj);
+    PyBytes_AsStringAndSize(obj, &cstr, &len);
+    if(alloc) *alloc = SWIG_NEWOBJ;
+#else
+    PyString_AsStringAndSize(obj, &cstr, &len);
+#endif
+    if (cptr) {
+      if (alloc) {
+	/* 
+	   In python the user should not be able to modify the inner
+	   string representation. To warranty that, if you define
+	   SWIG_PYTHON_SAFE_CSTRINGS, a new/copy of the python string
+	   buffer is always returned.
+
+	   The default behavior is just to return the pointer value,
+	   so, be careful.
+	*/ 
+#if defined(SWIG_PYTHON_SAFE_CSTRINGS)
+	if (*alloc != SWIG_OLDOBJ) 
+#else
+	if (*alloc == SWIG_NEWOBJ) 
+#endif
+	  {
+	    *cptr = reinterpret_cast< char* >(memcpy((new char[len + 1]), cstr, sizeof(char)*(len + 1)));
+	    *alloc = SWIG_NEWOBJ;
+	  }
+	else {
+	  *cptr = cstr;
+	  *alloc = SWIG_OLDOBJ;
+	}
+      } else {
+        #if PY_VERSION_HEX>=0x03000000
+        assert(0); /* Should never reach here in Python 3 */
+        #endif
+	*cptr = SWIG_Python_str_AsChar(obj);
+      }
+    }
+    if (psize) *psize = len + 1;
+#if PY_VERSION_HEX>=0x03000000
+    Py_XDECREF(obj);
+#endif
+    return SWIG_OK;
+  } else {
+    swig_type_info* pchar_descriptor = SWIG_pchar_descriptor();
+    if (pchar_descriptor) {
+      void* vptr = 0;
+      if (SWIG_ConvertPtr(obj, &vptr, pchar_descriptor, 0) == SWIG_OK) {
+	if (cptr) *cptr = (char *) vptr;
+	if (psize) *psize = vptr ? (strlen((char *)vptr) + 1) : 0;
+	if (alloc) *alloc = SWIG_OLDOBJ;
+	return SWIG_OK;
+      }
+    }
+  }
+  return SWIG_TypeError;
+}
+
+
+
 
 
   #define SWIG_From_double   PyFloat_FromDouble 
@@ -3132,24 +3224,44 @@ SWIG_CanCastAsInteger(double *d, double min, double max) {
 
 
 SWIGINTERN int
-SWIG_AsVal_long (PyObject *obj, long* val)
+SWIG_AsVal_unsigned_SS_long (PyObject *obj, unsigned long *val) 
 {
+#if PY_VERSION_HEX < 0x03000000
   if (PyInt_Check(obj)) {
-    if (val) *val = PyInt_AsLong(obj);
-    return SWIG_OK;
-  } else if (PyLong_Check(obj)) {
-    long v = PyLong_AsLong(obj);
+    long v = PyInt_AsLong(obj);
+    if (v >= 0) {
+      if (val) *val = v;
+      return SWIG_OK;
+    } else {
+      return SWIG_OverflowError;
+    }
+  } else
+#endif
+  if (PyLong_Check(obj)) {
+    unsigned long v = PyLong_AsUnsignedLong(obj);
     if (!PyErr_Occurred()) {
       if (val) *val = v;
       return SWIG_OK;
     } else {
       PyErr_Clear();
+#if PY_VERSION_HEX >= 0x03000000
+      {
+        long v = PyLong_AsLong(obj);
+        if (!PyErr_Occurred()) {
+          if (v < 0) {
+            return SWIG_OverflowError;
+          }
+        } else {
+          PyErr_Clear();
+        }
+      }
+#endif
     }
   }
 #ifdef SWIG_PYTHON_CAST_MODE
   {
     int dispatch = 0;
-    long v = PyInt_AsLong(obj);
+    unsigned long v = PyLong_AsUnsignedLong(obj);
     if (!PyErr_Occurred()) {
       if (val) *val = v;
       return SWIG_AddCast(SWIG_OK);
@@ -3159,8 +3271,8 @@ SWIG_AsVal_long (PyObject *obj, long* val)
     if (!dispatch) {
       double d;
       int res = SWIG_AddCast(SWIG_AsVal_double (obj,&d));
-      if (SWIG_IsOK(res) && SWIG_CanCastAsInteger(&d, LONG_MIN, LONG_MAX)) {
-	if (val) *val = (long)(d);
+      if (SWIG_IsOK(res) && SWIG_CanCastAsInteger(&d, 0, ULONG_MAX)) {
+	if (val) *val = (unsigned long)(d);
 	return res;
       }
     }
@@ -3171,15 +3283,15 @@ SWIG_AsVal_long (PyObject *obj, long* val)
 
 
 SWIGINTERN int
-SWIG_AsVal_int (PyObject * obj, int *val)
+SWIG_AsVal_unsigned_SS_int (PyObject * obj, unsigned int *val)
 {
-  long v;
-  int res = SWIG_AsVal_long (obj, &v);
+  unsigned long v;
+  int res = SWIG_AsVal_unsigned_SS_long (obj, &v);
   if (SWIG_IsOK(res)) {
-    if ((v < INT_MIN || v > INT_MAX)) {
+    if ((v > UINT_MAX)) {
       return SWIG_OverflowError;
     } else {
-      if (val) *val = static_cast< int >(v);
+      if (val) *val = static_cast< unsigned int >(v);
     }
   }  
   return res;
@@ -3188,32 +3300,32 @@ SWIG_AsVal_int (PyObject * obj, int *val)
 #ifdef __cplusplus
 extern "C" {
 #endif
-SWIGINTERN PyObject *_wrap_new_RandomUniformMT(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_new_RandomVarInt(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
-  RandomUniformMT *result = 0 ;
+  RandomVarInt *result = 0 ;
   
-  if (!PyArg_ParseTuple(args,(char *)":new_RandomUniformMT")) SWIG_fail;
-  result = (RandomUniformMT *)new RandomUniformMT();
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_RandomUniformMT, SWIG_POINTER_NEW |  0 );
+  if (!PyArg_ParseTuple(args,(char *)":new_RandomVarInt")) SWIG_fail;
+  result = (RandomVarInt *)new RandomVarInt();
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_RandomVarInt, SWIG_POINTER_NEW |  0 );
   return resultobj;
 fail:
   return NULL;
 }
 
 
-SWIGINTERN PyObject *_wrap_delete_RandomUniformMT(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_delete_RandomVarInt(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
-  RandomUniformMT *arg1 = (RandomUniformMT *) 0 ;
+  RandomVarInt *arg1 = (RandomVarInt *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   PyObject * obj0 = 0 ;
   
-  if (!PyArg_ParseTuple(args,(char *)"O:delete_RandomUniformMT",&obj0)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_RandomUniformMT, SWIG_POINTER_DISOWN |  0 );
+  if (!PyArg_ParseTuple(args,(char *)"O:delete_RandomVarInt",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_RandomVarInt, SWIG_POINTER_DISOWN |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_RandomUniformMT" "', argument " "1"" of type '" "RandomUniformMT *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_RandomVarInt" "', argument " "1"" of type '" "RandomVarInt *""'"); 
   }
-  arg1 = reinterpret_cast< RandomUniformMT * >(argp1);
+  arg1 = reinterpret_cast< RandomVarInt * >(argp1);
   delete arg1;
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -3222,160 +3334,170 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_RandomUniformMT_reset(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_RandomVarInt_getRandom__SWIG_0(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
-  RandomUniformMT *arg1 = (RandomUniformMT *) 0 ;
+  RandomVarInt *arg1 = (RandomVarInt *) 0 ;
+  char *arg2 = (char *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  PyObject * obj0 = 0 ;
-  
-  if (!PyArg_ParseTuple(args,(char *)"O:RandomUniformMT_reset",&obj0)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_RandomUniformMT, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RandomUniformMT_reset" "', argument " "1"" of type '" "RandomUniformMT *""'"); 
-  }
-  arg1 = reinterpret_cast< RandomUniformMT * >(argp1);
-  (arg1)->reset();
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_RandomUniformMT_gen__SWIG_0(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  RandomUniformMT *arg1 = (RandomUniformMT *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyObject * obj0 = 0 ;
-  double result;
-  
-  if (!PyArg_ParseTuple(args,(char *)"O:RandomUniformMT_gen",&obj0)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_RandomUniformMT, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RandomUniformMT_gen" "', argument " "1"" of type '" "RandomUniformMT *""'"); 
-  }
-  arg1 = reinterpret_cast< RandomUniformMT * >(argp1);
-  result = (double)(arg1)->gen();
-  resultobj = SWIG_From_double(static_cast< double >(result));
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_RandomUniformMT_gen__SWIG_1(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  RandomUniformMT *arg1 = (RandomUniformMT *) 0 ;
-  int arg2 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  int val2 ;
-  int ecode2 = 0 ;
+  int res2 ;
+  char *buf2 = 0 ;
+  int alloc2 = 0 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
-  double *result = 0 ;
+  double result;
   
-  if (!PyArg_ParseTuple(args,(char *)"OO:RandomUniformMT_gen",&obj0,&obj1)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_RandomUniformMT, 0 |  0 );
+  if (!PyArg_ParseTuple(args,(char *)"OO:RandomVarInt_getRandom",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_RandomVarInt, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RandomUniformMT_gen" "', argument " "1"" of type '" "RandomUniformMT *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RandomVarInt_getRandom" "', argument " "1"" of type '" "RandomVarInt *""'"); 
   }
-  arg1 = reinterpret_cast< RandomUniformMT * >(argp1);
-  ecode2 = SWIG_AsVal_int(obj1, &val2);
-  if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "RandomUniformMT_gen" "', argument " "2"" of type '" "int""'");
-  } 
-  arg2 = static_cast< int >(val2);
-  result = (double *)(arg1)->gen(arg2);
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_double, 0 |  0 );
+  arg1 = reinterpret_cast< RandomVarInt * >(argp1);
+  res2 = SWIG_AsCharPtrAndSize(obj1, &buf2, NULL, &alloc2);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "RandomVarInt_getRandom" "', argument " "2"" of type '" "char *""'");
+  }
+  arg2 = reinterpret_cast< char * >(buf2);
+  result = (double)(arg1)->getRandom(arg2);
+  resultobj = SWIG_From_double(static_cast< double >(result));
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
   return resultobj;
 fail:
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
   return NULL;
 }
 
 
-SWIGINTERN PyObject *_wrap_RandomUniformMT_gen(PyObject *self, PyObject *args) {
+SWIGINTERN PyObject *_wrap_RandomVarInt_getRandom__SWIG_1(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  RandomVarInt *arg1 = (RandomVarInt *) 0 ;
+  char *arg2 = (char *) 0 ;
+  unsigned int arg3 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 ;
+  char *buf2 = 0 ;
+  int alloc2 = 0 ;
+  unsigned int val3 ;
+  int ecode3 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  double *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOO:RandomVarInt_getRandom",&obj0,&obj1,&obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_RandomVarInt, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RandomVarInt_getRandom" "', argument " "1"" of type '" "RandomVarInt *""'"); 
+  }
+  arg1 = reinterpret_cast< RandomVarInt * >(argp1);
+  res2 = SWIG_AsCharPtrAndSize(obj1, &buf2, NULL, &alloc2);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "RandomVarInt_getRandom" "', argument " "2"" of type '" "char *""'");
+  }
+  arg2 = reinterpret_cast< char * >(buf2);
+  ecode3 = SWIG_AsVal_unsigned_SS_int(obj2, &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "RandomVarInt_getRandom" "', argument " "3"" of type '" "unsigned int""'");
+  } 
+  arg3 = static_cast< unsigned int >(val3);
+  result = (double *)(arg1)->getRandom(arg2,arg3);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_double, 0 |  0 );
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  return resultobj;
+fail:
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_RandomVarInt_getRandom(PyObject *self, PyObject *args) {
   int argc;
-  PyObject *argv[3];
+  PyObject *argv[4];
   int ii;
   
   if (!PyTuple_Check(args)) SWIG_fail;
   argc = args ? (int)PyObject_Length(args) : 0;
-  for (ii = 0; (ii < 2) && (ii < argc); ii++) {
+  for (ii = 0; (ii < 3) && (ii < argc); ii++) {
     argv[ii] = PyTuple_GET_ITEM(args,ii);
-  }
-  if (argc == 1) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RandomUniformMT, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      return _wrap_RandomUniformMT_gen__SWIG_0(self, args);
-    }
   }
   if (argc == 2) {
     int _v;
     void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RandomUniformMT, 0);
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RandomVarInt, 0);
     _v = SWIG_CheckState(res);
     if (_v) {
-      {
-        int res = SWIG_AsVal_int(argv[1], NULL);
-        _v = SWIG_CheckState(res);
-      }
+      int res = SWIG_AsCharPtrAndSize(argv[1], 0, NULL, 0);
+      _v = SWIG_CheckState(res);
       if (_v) {
-        return _wrap_RandomUniformMT_gen__SWIG_1(self, args);
+        return _wrap_RandomVarInt_getRandom__SWIG_0(self, args);
+      }
+    }
+  }
+  if (argc == 3) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RandomVarInt, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_AsCharPtrAndSize(argv[1], 0, NULL, 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        {
+          int res = SWIG_AsVal_unsigned_SS_int(argv[2], NULL);
+          _v = SWIG_CheckState(res);
+        }
+        if (_v) {
+          return _wrap_RandomVarInt_getRandom__SWIG_1(self, args);
+        }
       }
     }
   }
   
 fail:
-  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'RandomUniformMT_gen'.\n"
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'RandomVarInt_getRandom'.\n"
     "  Possible C/C++ prototypes are:\n"
-    "    RandomUniformMT::gen()\n"
-    "    RandomUniformMT::gen(int)\n");
+    "    RandomVarInt::getRandom(char *)\n"
+    "    RandomVarInt::getRandom(char *,unsigned int)\n");
   return 0;
 }
 
 
-SWIGINTERN PyObject *RandomUniformMT_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *RandomVarInt_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *obj;
   if (!PyArg_ParseTuple(args,(char*)"O:swigregister", &obj)) return NULL;
-  SWIG_TypeNewClientData(SWIGTYPE_p_RandomUniformMT, SWIG_NewClientData(obj));
+  SWIG_TypeNewClientData(SWIGTYPE_p_RandomVarInt, SWIG_NewClientData(obj));
   return SWIG_Py_Void();
 }
 
 static PyMethodDef SwigMethods[] = {
 	 { (char *)"SWIG_PyInstanceMethod_New", (PyCFunction)SWIG_PyInstanceMethod_New, METH_O, NULL},
-	 { (char *)"new_RandomUniformMT", _wrap_new_RandomUniformMT, METH_VARARGS, NULL},
-	 { (char *)"delete_RandomUniformMT", _wrap_delete_RandomUniformMT, METH_VARARGS, NULL},
-	 { (char *)"RandomUniformMT_reset", _wrap_RandomUniformMT_reset, METH_VARARGS, NULL},
-	 { (char *)"RandomUniformMT_gen", _wrap_RandomUniformMT_gen, METH_VARARGS, NULL},
-	 { (char *)"RandomUniformMT_swigregister", RandomUniformMT_swigregister, METH_VARARGS, NULL},
+	 { (char *)"new_RandomVarInt", _wrap_new_RandomVarInt, METH_VARARGS, NULL},
+	 { (char *)"delete_RandomVarInt", _wrap_delete_RandomVarInt, METH_VARARGS, NULL},
+	 { (char *)"RandomVarInt_getRandom", _wrap_RandomVarInt_getRandom, METH_VARARGS, NULL},
+	 { (char *)"RandomVarInt_swigregister", RandomVarInt_swigregister, METH_VARARGS, NULL},
 	 { NULL, NULL, 0, NULL }
 };
 
 
 /* -------- TYPE CONVERSION AND EQUIVALENCE RULES (BEGIN) -------- */
 
-static swig_type_info _swigt__p_RandomUniformMT = {"_p_RandomUniformMT", "RandomUniformMT *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_RandomVarInt = {"_p_RandomVarInt", "RandomVarInt *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_char = {"_p_char", "char *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_double = {"_p_double", "double *", 0, 0, (void*)0, 0};
 
 static swig_type_info *swig_type_initial[] = {
-  &_swigt__p_RandomUniformMT,
+  &_swigt__p_RandomVarInt,
   &_swigt__p_char,
   &_swigt__p_double,
 };
 
-static swig_cast_info _swigc__p_RandomUniformMT[] = {  {&_swigt__p_RandomUniformMT, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_RandomVarInt[] = {  {&_swigt__p_RandomVarInt, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_char[] = {  {&_swigt__p_char, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_double[] = {  {&_swigt__p_double, 0, 0, 0},{0, 0, 0, 0}};
 
 static swig_cast_info *swig_cast_initial[] = {
-  _swigc__p_RandomUniformMT,
+  _swigc__p_RandomVarInt,
   _swigc__p_char,
   _swigc__p_double,
 };
