@@ -1,0 +1,66 @@
+# depslib dependency file v1.0
+1438719958 source:/home/mrgeg/c++/QoinSim/src/main.cpp
+	"stdafx.h"
+
+1438710610 /home/mrgeg/c++/QoinSim/src/stdafx.h
+	<algorithm>
+	<map>
+	<list>
+	<vector>
+	<iostream>
+	<fstream>
+	<sstream>
+	<string>
+
+1438634541 source:/home/mrgeg/c++/QoinSim/src/QoinSim.cpp
+	"stdafx.h"
+	"QoinSim.h"
+
+1438635718 /home/mrgeg/c++/QoinSim/src/QoinSim.h
+	"stdafx.h"
+
+1438720529 source:/home/mrgeg/c++/QoinSim/src/RandomUniformMT.cpp
+	"RandomUniformMT.h"
+	"stdafx.h"
+
+1438720358 /home/mrgeg/c++/QoinSim/src/RandomUniformMT.h
+	<Random.h>
+
+1438719543 /home/mrgeg/c++/QoinSim/src//Random.h
+	"stdafx.h"
+
+1438710610 /home/mrgeg/c++/QoinSim/src//stdafx.h
+	<algorithm>
+	<map>
+	<list>
+	<vector>
+	<iostream>
+	<fstream>
+	<sstream>
+	<string>
+
+1439053301 source:/home/mrgeg/workspace/QoinSim/c++/QoinSim/src/RandomUniformMT.cpp
+	"RandomUniformMT.h"
+
+1439052422 /home/mrgeg/workspace/QoinSim/c++/QoinSim/src/RandomUniformMT.h
+	<Random.h>
+
+1438894419 /home/mrgeg/workspace/QoinSim/c++/QoinSim/include/Random.h
+	"Misc.h"
+
+1438891567 /home/mrgeg/workspace/QoinSim/c++/QoinSim/src/stdafx.h
+
+1439078110 /home/mrgeg/workspace/QoinSim/c++/QoinSim/src/Misc.h
+	<algorithm>
+	<map>
+	<list>
+	<vector>
+	<iostream>
+	<fstream>
+	<sstream>
+	<string>
+	<memory>
+
+1439079085 /home/mrgeg/workspace/QoinSim/c++/QoinSim/src/Random.h
+	"Misc.h"
+
