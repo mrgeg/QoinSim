@@ -2934,7 +2934,7 @@ SWIG_Python_NonDynamicSetAttr(PyObject *obj, PyObject *name, PyObject *value) {
 
 /* -------- TYPES TABLE (BEGIN) -------- */
 
-#define SWIGTYPE_p_RandomVarInt swig_types[0]
+#define SWIGTYPE_p_QOINSIM__RandomVarInt swig_types[0]
 #define SWIGTYPE_p_char swig_types[1]
 #define SWIGTYPE_p_double swig_types[2]
 static swig_type_info *swig_types[4];
@@ -3035,7 +3035,7 @@ namespace swig {
 }
 
 
-#include "headerForSwig.h"
+#include "RandomVarInt.h"
 
 
 SWIGINTERN swig_type_info*
@@ -3302,11 +3302,11 @@ extern "C" {
 #endif
 SWIGINTERN PyObject *_wrap_new_RandomVarInt(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
-  RandomVarInt *result = 0 ;
+  QOINSIM::RandomVarInt *result = 0 ;
   
   if (!PyArg_ParseTuple(args,(char *)":new_RandomVarInt")) SWIG_fail;
-  result = (RandomVarInt *)new RandomVarInt();
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_RandomVarInt, SWIG_POINTER_NEW |  0 );
+  result = (QOINSIM::RandomVarInt *)new QOINSIM::RandomVarInt();
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_QOINSIM__RandomVarInt, SWIG_POINTER_NEW |  0 );
   return resultobj;
 fail:
   return NULL;
@@ -3315,17 +3315,17 @@ fail:
 
 SWIGINTERN PyObject *_wrap_delete_RandomVarInt(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
-  RandomVarInt *arg1 = (RandomVarInt *) 0 ;
+  QOINSIM::RandomVarInt *arg1 = (QOINSIM::RandomVarInt *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   PyObject * obj0 = 0 ;
   
   if (!PyArg_ParseTuple(args,(char *)"O:delete_RandomVarInt",&obj0)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_RandomVarInt, SWIG_POINTER_DISOWN |  0 );
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_QOINSIM__RandomVarInt, SWIG_POINTER_DISOWN |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_RandomVarInt" "', argument " "1"" of type '" "RandomVarInt *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_RandomVarInt" "', argument " "1"" of type '" "QOINSIM::RandomVarInt *""'"); 
   }
-  arg1 = reinterpret_cast< RandomVarInt * >(argp1);
+  arg1 = reinterpret_cast< QOINSIM::RandomVarInt * >(argp1);
   delete arg1;
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -3336,7 +3336,7 @@ fail:
 
 SWIGINTERN PyObject *_wrap_RandomVarInt_getRandom__SWIG_0(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
-  RandomVarInt *arg1 = (RandomVarInt *) 0 ;
+  QOINSIM::RandomVarInt *arg1 = (QOINSIM::RandomVarInt *) 0 ;
   char *arg2 = (char *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
@@ -3348,11 +3348,11 @@ SWIGINTERN PyObject *_wrap_RandomVarInt_getRandom__SWIG_0(PyObject *SWIGUNUSEDPA
   double result;
   
   if (!PyArg_ParseTuple(args,(char *)"OO:RandomVarInt_getRandom",&obj0,&obj1)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_RandomVarInt, 0 |  0 );
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_QOINSIM__RandomVarInt, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RandomVarInt_getRandom" "', argument " "1"" of type '" "RandomVarInt *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RandomVarInt_getRandom" "', argument " "1"" of type '" "QOINSIM::RandomVarInt *""'"); 
   }
-  arg1 = reinterpret_cast< RandomVarInt * >(argp1);
+  arg1 = reinterpret_cast< QOINSIM::RandomVarInt * >(argp1);
   res2 = SWIG_AsCharPtrAndSize(obj1, &buf2, NULL, &alloc2);
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "RandomVarInt_getRandom" "', argument " "2"" of type '" "char *""'");
@@ -3370,7 +3370,7 @@ fail:
 
 SWIGINTERN PyObject *_wrap_RandomVarInt_getRandom__SWIG_1(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
-  RandomVarInt *arg1 = (RandomVarInt *) 0 ;
+  QOINSIM::RandomVarInt *arg1 = (QOINSIM::RandomVarInt *) 0 ;
   char *arg2 = (char *) 0 ;
   unsigned int arg3 ;
   void *argp1 = 0 ;
@@ -3386,11 +3386,11 @@ SWIGINTERN PyObject *_wrap_RandomVarInt_getRandom__SWIG_1(PyObject *SWIGUNUSEDPA
   double *result = 0 ;
   
   if (!PyArg_ParseTuple(args,(char *)"OOO:RandomVarInt_getRandom",&obj0,&obj1,&obj2)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_RandomVarInt, 0 |  0 );
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_QOINSIM__RandomVarInt, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RandomVarInt_getRandom" "', argument " "1"" of type '" "RandomVarInt *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RandomVarInt_getRandom" "', argument " "1"" of type '" "QOINSIM::RandomVarInt *""'"); 
   }
-  arg1 = reinterpret_cast< RandomVarInt * >(argp1);
+  arg1 = reinterpret_cast< QOINSIM::RandomVarInt * >(argp1);
   res2 = SWIG_AsCharPtrAndSize(obj1, &buf2, NULL, &alloc2);
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "RandomVarInt_getRandom" "', argument " "2"" of type '" "char *""'");
@@ -3424,7 +3424,7 @@ SWIGINTERN PyObject *_wrap_RandomVarInt_getRandom(PyObject *self, PyObject *args
   if (argc == 2) {
     int _v;
     void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RandomVarInt, 0);
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_QOINSIM__RandomVarInt, 0);
     _v = SWIG_CheckState(res);
     if (_v) {
       int res = SWIG_AsCharPtrAndSize(argv[1], 0, NULL, 0);
@@ -3437,7 +3437,7 @@ SWIGINTERN PyObject *_wrap_RandomVarInt_getRandom(PyObject *self, PyObject *args
   if (argc == 3) {
     int _v;
     void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_RandomVarInt, 0);
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_QOINSIM__RandomVarInt, 0);
     _v = SWIG_CheckState(res);
     if (_v) {
       int res = SWIG_AsCharPtrAndSize(argv[1], 0, NULL, 0);
@@ -3457,8 +3457,8 @@ SWIGINTERN PyObject *_wrap_RandomVarInt_getRandom(PyObject *self, PyObject *args
 fail:
   SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'RandomVarInt_getRandom'.\n"
     "  Possible C/C++ prototypes are:\n"
-    "    RandomVarInt::getRandom(char *)\n"
-    "    RandomVarInt::getRandom(char *,unsigned int)\n");
+    "    QOINSIM::RandomVarInt::getRandom(char *)\n"
+    "    QOINSIM::RandomVarInt::getRandom(char *,unsigned int)\n");
   return 0;
 }
 
@@ -3466,7 +3466,7 @@ fail:
 SWIGINTERN PyObject *RandomVarInt_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *obj;
   if (!PyArg_ParseTuple(args,(char*)"O:swigregister", &obj)) return NULL;
-  SWIG_TypeNewClientData(SWIGTYPE_p_RandomVarInt, SWIG_NewClientData(obj));
+  SWIG_TypeNewClientData(SWIGTYPE_p_QOINSIM__RandomVarInt, SWIG_NewClientData(obj));
   return SWIG_Py_Void();
 }
 
@@ -3482,22 +3482,22 @@ static PyMethodDef SwigMethods[] = {
 
 /* -------- TYPE CONVERSION AND EQUIVALENCE RULES (BEGIN) -------- */
 
-static swig_type_info _swigt__p_RandomVarInt = {"_p_RandomVarInt", "RandomVarInt *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_QOINSIM__RandomVarInt = {"_p_QOINSIM__RandomVarInt", "QOINSIM::RandomVarInt *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_char = {"_p_char", "char *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_double = {"_p_double", "double *", 0, 0, (void*)0, 0};
 
 static swig_type_info *swig_type_initial[] = {
-  &_swigt__p_RandomVarInt,
+  &_swigt__p_QOINSIM__RandomVarInt,
   &_swigt__p_char,
   &_swigt__p_double,
 };
 
-static swig_cast_info _swigc__p_RandomVarInt[] = {  {&_swigt__p_RandomVarInt, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_QOINSIM__RandomVarInt[] = {  {&_swigt__p_QOINSIM__RandomVarInt, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_char[] = {  {&_swigt__p_char, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_double[] = {  {&_swigt__p_double, 0, 0, 0},{0, 0, 0, 0}};
 
 static swig_cast_info *swig_cast_initial[] = {
-  _swigc__p_RandomVarInt,
+  _swigc__p_QOINSIM__RandomVarInt,
   _swigc__p_char,
   _swigc__p_double,
 };

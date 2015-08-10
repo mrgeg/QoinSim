@@ -1,16 +1,17 @@
-%module qoinSim
-%{
-#include "RandomVarInt.h"
-%}
+#ifndef RANDOMVARINT_H
+#define RANDOMVARINT_H
 
-using namespace QOINSIM;
-
+namespace QOINSIM {
 class RandomVarInt{
   public:
-    RandomVarInt();
-    ~RandomVarInt();
+    RandomVarInt(){}
+    ~RandomVarInt(){}
 
   public:
     double getRandom(char* p_type);
     double* getRandom(char* p_type, unsigned int p_size);
+
 };
+}
+
+#endif // RANDOMVARINT_H

@@ -1,8 +1,9 @@
 %module qoinSim
 %{
-#include "headerForSwig.h"
+#include "RandomVarInt.h"
 %}
 
+namespace QOINSIM {
 class RandomVarInt{
   public:
     RandomVarInt();
@@ -12,3 +13,4 @@ class RandomVarInt{
     double getRandom(char* p_type);
     double* getRandom(char* p_type, unsigned int p_size);
 };
+}
