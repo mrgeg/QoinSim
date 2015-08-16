@@ -11,6 +11,6 @@ class RandomVarInt{
 
   public:
     double getRandom(char* p_type);
-    double* getRandom(char* p_type, unsigned int p_size);
+    double* getRandomVect(char* p_type, unsigned int p_size);
 };
 }

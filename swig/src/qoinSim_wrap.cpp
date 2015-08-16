@@ -3334,7 +3334,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_RandomVarInt_getRandom__SWIG_0(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_RandomVarInt_getRandom(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   QOINSIM::RandomVarInt *arg1 = (QOINSIM::RandomVarInt *) 0 ;
   char *arg2 = (char *) 0 ;
@@ -3368,7 +3368,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_RandomVarInt_getRandom__SWIG_1(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_RandomVarInt_getRandomVect(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   QOINSIM::RandomVarInt *arg1 = (QOINSIM::RandomVarInt *) 0 ;
   char *arg2 = (char *) 0 ;
@@ -3385,81 +3385,29 @@ SWIGINTERN PyObject *_wrap_RandomVarInt_getRandom__SWIG_1(PyObject *SWIGUNUSEDPA
   PyObject * obj2 = 0 ;
   double *result = 0 ;
   
-  if (!PyArg_ParseTuple(args,(char *)"OOO:RandomVarInt_getRandom",&obj0,&obj1,&obj2)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"OOO:RandomVarInt_getRandomVect",&obj0,&obj1,&obj2)) SWIG_fail;
   res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_QOINSIM__RandomVarInt, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RandomVarInt_getRandom" "', argument " "1"" of type '" "QOINSIM::RandomVarInt *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RandomVarInt_getRandomVect" "', argument " "1"" of type '" "QOINSIM::RandomVarInt *""'"); 
   }
   arg1 = reinterpret_cast< QOINSIM::RandomVarInt * >(argp1);
   res2 = SWIG_AsCharPtrAndSize(obj1, &buf2, NULL, &alloc2);
   if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "RandomVarInt_getRandom" "', argument " "2"" of type '" "char *""'");
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "RandomVarInt_getRandomVect" "', argument " "2"" of type '" "char *""'");
   }
   arg2 = reinterpret_cast< char * >(buf2);
   ecode3 = SWIG_AsVal_unsigned_SS_int(obj2, &val3);
   if (!SWIG_IsOK(ecode3)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "RandomVarInt_getRandom" "', argument " "3"" of type '" "unsigned int""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "RandomVarInt_getRandomVect" "', argument " "3"" of type '" "unsigned int""'");
   } 
   arg3 = static_cast< unsigned int >(val3);
-  result = (double *)(arg1)->getRandom(arg2,arg3);
+  result = (double *)(arg1)->getRandomVect(arg2,arg3);
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_double, 0 |  0 );
   if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
   return resultobj;
 fail:
   if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
   return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_RandomVarInt_getRandom(PyObject *self, PyObject *args) {
-  int argc;
-  PyObject *argv[4];
-  int ii;
-  
-  if (!PyTuple_Check(args)) SWIG_fail;
-  argc = args ? (int)PyObject_Length(args) : 0;
-  for (ii = 0; (ii < 3) && (ii < argc); ii++) {
-    argv[ii] = PyTuple_GET_ITEM(args,ii);
-  }
-  if (argc == 2) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_QOINSIM__RandomVarInt, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      int res = SWIG_AsCharPtrAndSize(argv[1], 0, NULL, 0);
-      _v = SWIG_CheckState(res);
-      if (_v) {
-        return _wrap_RandomVarInt_getRandom__SWIG_0(self, args);
-      }
-    }
-  }
-  if (argc == 3) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_QOINSIM__RandomVarInt, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      int res = SWIG_AsCharPtrAndSize(argv[1], 0, NULL, 0);
-      _v = SWIG_CheckState(res);
-      if (_v) {
-        {
-          int res = SWIG_AsVal_unsigned_SS_int(argv[2], NULL);
-          _v = SWIG_CheckState(res);
-        }
-        if (_v) {
-          return _wrap_RandomVarInt_getRandom__SWIG_1(self, args);
-        }
-      }
-    }
-  }
-  
-fail:
-  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'RandomVarInt_getRandom'.\n"
-    "  Possible C/C++ prototypes are:\n"
-    "    QOINSIM::RandomVarInt::getRandom(char *)\n"
-    "    QOINSIM::RandomVarInt::getRandom(char *,unsigned int)\n");
-  return 0;
 }
 
 
@@ -3475,6 +3423,7 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"new_RandomVarInt", _wrap_new_RandomVarInt, METH_VARARGS, NULL},
 	 { (char *)"delete_RandomVarInt", _wrap_delete_RandomVarInt, METH_VARARGS, NULL},
 	 { (char *)"RandomVarInt_getRandom", _wrap_RandomVarInt_getRandom, METH_VARARGS, NULL},
+	 { (char *)"RandomVarInt_getRandomVect", _wrap_RandomVarInt_getRandomVect, METH_VARARGS, NULL},
 	 { (char *)"RandomVarInt_swigregister", RandomVarInt_swigregister, METH_VARARGS, NULL},
 	 { NULL, NULL, 0, NULL }
 };

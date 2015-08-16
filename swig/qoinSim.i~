@@ -1,4 +1,4 @@
-%module QoinSim
+%module PyQoinSim
 %{
 #include "RandomVarInt.h"
 %}

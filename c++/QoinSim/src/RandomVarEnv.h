@@ -19,7 +19,7 @@ public:
 
 public:
   double getRandom(std::string p_type);
-  double* getRandom(std::string p_type, unsigned int p_size);
+  std::vector<double> getRandom(std::string p_type, unsigned int p_size);
 
 public:
   static const std::map<std::string, Random::ERandomVarType> s_typeMap;

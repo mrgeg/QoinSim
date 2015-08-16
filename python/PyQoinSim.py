@@ -82,6 +82,7 @@ class RandomVarInt(_object):
     __swig_destroy__ = _PyQoinSim.delete_RandomVarInt
     __del__ = lambda self : None;
     def getRandom(self, *args): return _PyQoinSim.RandomVarInt_getRandom(self, *args)
+    def getRandomVect(self, *args): return _PyQoinSim.RandomVarInt_getRandomVect(self, *args)
 RandomVarInt_swigregister = _PyQoinSim.RandomVarInt_swigregister
 RandomVarInt_swigregister(RandomVarInt)
 
