@@ -2951,16 +2951,16 @@ static swig_module_info swig_module = {swig_types, 3, 0, 0, 0, 0};
 #endif
 
 /*-----------------------------------------------
-              @(target):= _qoinSim.so
+              @(target):= _PyQoinSim.so
   ------------------------------------------------*/
 #if PY_VERSION_HEX >= 0x03000000
-#  define SWIG_init    PyInit__qoinSim
+#  define SWIG_init    PyInit__PyQoinSim
 
 #else
-#  define SWIG_init    init_qoinSim
+#  define SWIG_init    init_PyQoinSim
 
 #endif
-#define SWIG_name    "_qoinSim"
+#define SWIG_name    "_PyQoinSim"
 
 #define SWIGVERSION 0x020011 
 #define SWIG_VERSION SWIGVERSION

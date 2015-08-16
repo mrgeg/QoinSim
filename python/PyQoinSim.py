@@ -15,20 +15,20 @@ if version_info >= (2,6,0):
         import imp
         fp = None
         try:
-            fp, pathname, description = imp.find_module('_qoinSim', [dirname(__file__)])
+            fp, pathname, description = imp.find_module('_PyQoinSim', [dirname(__file__)])
         except ImportError:
-            import _qoinSim
-            return _qoinSim
+            import _PyQoinSim
+            return _PyQoinSim
         if fp is not None:
             try:
-                _mod = imp.load_module('_qoinSim', fp, pathname, description)
+                _mod = imp.load_module('_PyQoinSim', fp, pathname, description)
             finally:
                 fp.close()
             return _mod
-    _qoinSim = swig_import_helper()
+    _PyQoinSim = swig_import_helper()
     del swig_import_helper
 else:
-    import _qoinSim
+    import _PyQoinSim
 del version_info
 try:
     _swig_property = property
@@ -76,13 +76,13 @@ class RandomVarInt(_object):
     __getattr__ = lambda self, name: _swig_getattr(self, RandomVarInt, name)
     __repr__ = _swig_repr
     def __init__(self): 
-        this = _qoinSim.new_RandomVarInt()
+        this = _PyQoinSim.new_RandomVarInt()
         try: self.this.append(this)
         except: self.this = this
-    __swig_destroy__ = _qoinSim.delete_RandomVarInt
+    __swig_destroy__ = _PyQoinSim.delete_RandomVarInt
     __del__ = lambda self : None;
-    def getRandom(self, *args): return _qoinSim.RandomVarInt_getRandom(self, *args)
-RandomVarInt_swigregister = _qoinSim.RandomVarInt_swigregister
+    def getRandom(self, *args): return _PyQoinSim.RandomVarInt_getRandom(self, *args)
+RandomVarInt_swigregister = _PyQoinSim.RandomVarInt_swigregister
 RandomVarInt_swigregister(RandomVarInt)
 
 # This file is compatible with both classic and new-style classes.

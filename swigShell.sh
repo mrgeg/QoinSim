@@ -8,4 +8,6 @@ swig -c++ -python -o $currentPath/swig/src/qoinSim_wrap.cpp $currentPath/swig/qo
 g++ -fPIC -c $currentPath/swig/src/qoinSim_wrap.cpp -o $currentPath/swig/obj/Release/qoinSim_wrap.o -I/usr/include/python2.7/
 cp -fr $currentPath/c++/QoinSim/obj/Release/src/* $currentPath/swig/obj/Release/
 cd $currentPath/swig/obj/Release/
-g++ -shared qoinSim_wrap.o RandomUniformMT.o RandomVarEnv.o RandomVarInt.o -o $currentPath/swig/bin/Release/qoinSim_wrap.so
+g++ -shared qoinSim_wrap.o RandomUniformMT.o RandomVarEnv.o RandomVarInt.o -o $currentPath/swig/bin/Release/_PyQoinSim.so
+cp -fr $currentPath/swig/bin/Release/_PyQoinSim.so $currentPath/python/
+cp -fr $currentPath/swig/src/PyQoinSim.py $currentPath/python/

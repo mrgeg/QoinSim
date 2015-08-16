@@ -1,0 +1,5 @@
+using namespace std;
+
+namespace hel {
+std::string hello();
+}
