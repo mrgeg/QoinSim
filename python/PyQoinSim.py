@@ -69,6 +69,82 @@ except AttributeError:
     _newclass = 0
 
 
+class SwigPyIterator(_object):
+    __swig_setmethods__ = {}
+    __setattr__ = lambda self, name, value: _swig_setattr(self, SwigPyIterator, name, value)
+    __swig_getmethods__ = {}
+    __getattr__ = lambda self, name: _swig_getattr(self, SwigPyIterator, name)
+    def __init__(self, *args, **kwargs): raise AttributeError("No constructor defined - class is abstract")
+    __repr__ = _swig_repr
+    __swig_destroy__ = _PyQoinSim.delete_SwigPyIterator
+    __del__ = lambda self : None;
+    def value(self): return _PyQoinSim.SwigPyIterator_value(self)
+    def incr(self, n=1): return _PyQoinSim.SwigPyIterator_incr(self, n)
+    def decr(self, n=1): return _PyQoinSim.SwigPyIterator_decr(self, n)
+    def distance(self, *args): return _PyQoinSim.SwigPyIterator_distance(self, *args)
+    def equal(self, *args): return _PyQoinSim.SwigPyIterator_equal(self, *args)
+    def copy(self): return _PyQoinSim.SwigPyIterator_copy(self)
+    def next(self): return _PyQoinSim.SwigPyIterator_next(self)
+    def __next__(self): return _PyQoinSim.SwigPyIterator___next__(self)
+    def previous(self): return _PyQoinSim.SwigPyIterator_previous(self)
+    def advance(self, *args): return _PyQoinSim.SwigPyIterator_advance(self, *args)
+    def __eq__(self, *args): return _PyQoinSim.SwigPyIterator___eq__(self, *args)
+    def __ne__(self, *args): return _PyQoinSim.SwigPyIterator___ne__(self, *args)
+    def __iadd__(self, *args): return _PyQoinSim.SwigPyIterator___iadd__(self, *args)
+    def __isub__(self, *args): return _PyQoinSim.SwigPyIterator___isub__(self, *args)
+    def __add__(self, *args): return _PyQoinSim.SwigPyIterator___add__(self, *args)
+    def __sub__(self, *args): return _PyQoinSim.SwigPyIterator___sub__(self, *args)
+    def __iter__(self): return self
+SwigPyIterator_swigregister = _PyQoinSim.SwigPyIterator_swigregister
+SwigPyIterator_swigregister(SwigPyIterator)
+
+class VectorDouble(_object):
+    __swig_setmethods__ = {}
+    __setattr__ = lambda self, name, value: _swig_setattr(self, VectorDouble, name, value)
+    __swig_getmethods__ = {}
+    __getattr__ = lambda self, name: _swig_getattr(self, VectorDouble, name)
+    __repr__ = _swig_repr
+    def iterator(self): return _PyQoinSim.VectorDouble_iterator(self)
+    def __iter__(self): return self.iterator()
+    def __nonzero__(self): return _PyQoinSim.VectorDouble___nonzero__(self)
+    def __bool__(self): return _PyQoinSim.VectorDouble___bool__(self)
+    def __len__(self): return _PyQoinSim.VectorDouble___len__(self)
+    def pop(self): return _PyQoinSim.VectorDouble_pop(self)
+    def __getslice__(self, *args): return _PyQoinSim.VectorDouble___getslice__(self, *args)
+    def __setslice__(self, *args): return _PyQoinSim.VectorDouble___setslice__(self, *args)
+    def __delslice__(self, *args): return _PyQoinSim.VectorDouble___delslice__(self, *args)
+    def __delitem__(self, *args): return _PyQoinSim.VectorDouble___delitem__(self, *args)
+    def __getitem__(self, *args): return _PyQoinSim.VectorDouble___getitem__(self, *args)
+    def __setitem__(self, *args): return _PyQoinSim.VectorDouble___setitem__(self, *args)
+    def append(self, *args): return _PyQoinSim.VectorDouble_append(self, *args)
+    def empty(self): return _PyQoinSim.VectorDouble_empty(self)
+    def size(self): return _PyQoinSim.VectorDouble_size(self)
+    def clear(self): return _PyQoinSim.VectorDouble_clear(self)
+    def swap(self, *args): return _PyQoinSim.VectorDouble_swap(self, *args)
+    def get_allocator(self): return _PyQoinSim.VectorDouble_get_allocator(self)
+    def begin(self): return _PyQoinSim.VectorDouble_begin(self)
+    def end(self): return _PyQoinSim.VectorDouble_end(self)
+    def rbegin(self): return _PyQoinSim.VectorDouble_rbegin(self)
+    def rend(self): return _PyQoinSim.VectorDouble_rend(self)
+    def pop_back(self): return _PyQoinSim.VectorDouble_pop_back(self)
+    def erase(self, *args): return _PyQoinSim.VectorDouble_erase(self, *args)
+    def __init__(self, *args): 
+        this = _PyQoinSim.new_VectorDouble(*args)
+        try: self.this.append(this)
+        except: self.this = this
+    def push_back(self, *args): return _PyQoinSim.VectorDouble_push_back(self, *args)
+    def front(self): return _PyQoinSim.VectorDouble_front(self)
+    def back(self): return _PyQoinSim.VectorDouble_back(self)
+    def assign(self, *args): return _PyQoinSim.VectorDouble_assign(self, *args)
+    def resize(self, *args): return _PyQoinSim.VectorDouble_resize(self, *args)
+    def insert(self, *args): return _PyQoinSim.VectorDouble_insert(self, *args)
+    def reserve(self, *args): return _PyQoinSim.VectorDouble_reserve(self, *args)
+    def capacity(self): return _PyQoinSim.VectorDouble_capacity(self)
+    __swig_destroy__ = _PyQoinSim.delete_VectorDouble
+    __del__ = lambda self : None;
+VectorDouble_swigregister = _PyQoinSim.VectorDouble_swigregister
+VectorDouble_swigregister(VectorDouble)
+
 class RandomVarInt(_object):
     __swig_setmethods__ = {}
     __setattr__ = lambda self, name, value: _swig_setattr(self, RandomVarInt, name, value)
@@ -82,7 +158,6 @@ class RandomVarInt(_object):
     __swig_destroy__ = _PyQoinSim.delete_RandomVarInt
     __del__ = lambda self : None;
     def getRandom(self, *args): return _PyQoinSim.RandomVarInt_getRandom(self, *args)
-    def getRandomVect(self, *args): return _PyQoinSim.RandomVarInt_getRandomVect(self, *args)
 RandomVarInt_swigregister = _PyQoinSim.RandomVarInt_swigregister
 RandomVarInt_swigregister(RandomVarInt)
 

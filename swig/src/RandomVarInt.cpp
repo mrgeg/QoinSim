@@ -3,18 +3,16 @@
 
 namespace QOINSIM {
 double
-RandomVarInt::getRandom(char* p_type){
+RandomVarInt::getRandom(std::string p_type){
   RandomVarEnv& l_env = RandomVarEnv::instance();
 
-  std::string l_type(p_type);
-  return l_env.getRandom(l_type);
+  return l_env.getRandom(p_type);
 }
-double*
-RandomVarInt::getRandomVect(char* p_type, unsigned int p_size){
+std::vector<double>
+RandomVarInt::getRandom(std::string p_type, unsigned int p_size){
   RandomVarEnv& l_env = RandomVarEnv::instance();
 
-  std::string l_type(p_type);
-  return l_env.getRandom(l_type, p_size);
+  return l_env.getRandom(p_type, p_size);
 }
 
 //extern "C"

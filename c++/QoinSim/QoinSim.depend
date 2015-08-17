@@ -64,18 +64,20 @@
 1439595949 /home/mrgeg/workspace/QoinSim/c++/QoinSim/src/Random.h
 	"Misc.h"
 
-1439595949 source:/home/mrgeg/workspace/QoinSim/c++/QoinSim/src/RandomVarEnv.cpp
+1439733445 source:/home/mrgeg/workspace/QoinSim/c++/QoinSim/src/RandomVarEnv.cpp
 	"RandomVarEnv.h"
 	"RandomUniformMT.h"
 	"Misc.h"
 
-1439595949 /home/mrgeg/workspace/QoinSim/c++/QoinSim/src/RandomVarEnv.h
+1439733415 /home/mrgeg/workspace/QoinSim/c++/QoinSim/src/RandomVarEnv.h
 	"Random.h"
 	"Misc.h"
 
-1439145066 source:/home/mrgeg/workspace/QoinSim/c++/QoinSim/src/RandomVarInt.cpp
+1439741876 source:/home/mrgeg/workspace/QoinSim/c++/QoinSim/src/RandomVarInt.cpp
 	"RandomVarInt.h"
 	"RandomVarEnv.h"
 
-1439145964 /home/mrgeg/workspace/QoinSim/c++/QoinSim/src/RandomVarInt.h
+1439742088 /home/mrgeg/workspace/QoinSim/c++/QoinSim/src/RandomVarInt.h
+	<vector>
+	<string>
 

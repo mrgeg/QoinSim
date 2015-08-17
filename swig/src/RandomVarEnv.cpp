@@ -50,12 +50,12 @@ RandomVarEnv::getRandom(std::string p_type) {
   return m_randomVars[l_type]->gen();
 }
 
-double*
+std::vector<double>
 RandomVarEnv::getRandom(std::string p_type, unsigned int p_size) {
   Random::ERandomVarType l_type = stringToType(p_type, s_typeMap);
   if (m_randomVars.find(l_type) == m_randomVars.end())
     m_randomVars[l_type] = RandomVarFactory::buildUnique(l_type);
 
-  return &m_randomVars[l_type]->gen(p_size)[0];
+  return m_randomVars[l_type]->gen(p_size);
 }
 }
