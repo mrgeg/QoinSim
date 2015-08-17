@@ -1,8 +1,0 @@
-%module example
-%{
-#include "hello.h"
-%}
-using namespace std;
-namespace hel {
-std::string hello();
-}

@@ -1,3 +1,0 @@
-import PyQoinSim
-
-randomInt = PyQoinSim.RandomVarInt()
