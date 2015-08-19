@@ -52,6 +52,8 @@
 		<Unit filename="src/Random.h" />
 		<Unit filename="src/RandomUniformMT.cpp" />
 		<Unit filename="src/RandomUniformMT.h" />
+		<Unit filename="src/RandomUniformSobol.cpp" />
+		<Unit filename="src/RandomUniformSobol.h" />
 		<Unit filename="src/RandomVarEnv.cpp" />
 		<Unit filename="src/RandomVarEnv.h" />
 		<Unit filename="src/RandomVarInt.cpp" />

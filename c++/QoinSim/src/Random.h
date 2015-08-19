@@ -9,7 +9,6 @@ class Random{
   public:
     enum ERandomVarType{
       E_UniformMT = 0,
-      E_UniformSobol366,
       E_UniformSobol1111,
       E_MAX
 };

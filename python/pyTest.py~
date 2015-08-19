@@ -3,8 +3,8 @@ import PyQoinSim
 
 random = PyQoinSim.RandomVarInt()
 
-x = random.getRandom("UniformMT", 10000)
-y = random.getRandom("UniformMT", 10000)
+x = random.getRandom("UniformMT", 100000)
+y = random.getRandom("UniformMT", 100000)
 
 plt.scatter(x,y)
 plt.show()
