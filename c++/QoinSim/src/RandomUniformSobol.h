@@ -37,7 +37,8 @@ class RandomUniformSobol : public RandomUniform {
     static const int s_maxDim;
 
     static const int s_poly[MAXDIM];
-    static const int s_v[MAXDIM][MAXBIT];
+    static const int s_polyDeg[MAXDIM];
+    static const int s_v[MAXBIT][MAXDIM];
 
 };
 }

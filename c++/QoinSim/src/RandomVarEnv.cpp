@@ -8,9 +8,8 @@ RandomVarEnv* RandomVarEnv::m_pInstance = 0;
 
 const std::map<std::string, Random::ERandomVarType>
 RandomVarEnv::s_typeMap = {
-  {"UniformMT",        Random::E_UniformMT},
-  {"UniformSobol366",  Random::E_UniformSobol366},
-  {"UniformSobol1111", Random::E_UniformSobol1111}
+  {"UniformMT",    Random::E_UniformMT},
+  {"UniformSobol", Random::E_UniformSobol1111}
 };
 
 RandomVarEnv&
