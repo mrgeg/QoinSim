@@ -11,6 +11,7 @@
 #include <string>
 #include <memory>
 
+namespace QOINSIM {
 
 template<typename T>
 T stringToType(std::string p_type, const std::map<std::string, T>& p_map, bool p_matchCase = false){
@@ -22,10 +23,38 @@ T stringToType(std::string p_type, const std::map<std::string, T>& p_map, bool p
 
   throw "unknown type";
 }
+
 template<typename T, typename... Args>
-std::unique_ptr<T> make_unique(Args&&... p_args)
-{
+std::unique_ptr<T> make_unique(Args&&... p_args){
     return std::unique_ptr<T>(new T(std::forward<Args>(p_args)...));
+}
+
+std::vector<std::string>
+split(std::string p_str, std::string p_sep = ",");
+
+std::map<std::string, std::string>
+arrayArgstoMap(std::vector<std::string> p_args, std::string p_sep = ":");
+
+struct IConfig {
+void init(std::vector<std::string> p_args){
+  m_map = arrayArgstoMap(p_args);
+
+  if (!isValid())
+    throw "config failed";
+
+  parse();
+}
+
+protected:
+  virtual void parse()    = 0;
+
+  virtual bool isValid()  = 0;
+
+protected:
+  std::map<std::string,std::string> m_map;
+
+};
+
 }
 
 #endif

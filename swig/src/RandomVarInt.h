@@ -11,8 +11,8 @@ class RandomVarInt{
     ~RandomVarInt(){}
 
   public:
-    double getRandom(std::string p_type);
-    std::vector<double> getRandom(std::string p_type, unsigned int p_size);
+    double getRandom(std::vector<std::string> p_args);
+    std::vector<double> getRandom(std::vector<std::string> p_args, unsigned int p_size);
 
 };
 }

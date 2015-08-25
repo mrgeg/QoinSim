@@ -50,7 +50,7 @@
 
 1438891567 /home/mrgeg/workspace/QoinSim/c++/QoinSim/src/stdafx.h
 
-1439078110 /home/mrgeg/workspace/QoinSim/c++/QoinSim/src/Misc.h
+1440507323 /home/mrgeg/workspace/QoinSim/c++/QoinSim/src/Misc.h
 	<algorithm>
 	<map>
 	<list>
@@ -61,23 +61,30 @@
 	<string>
 	<memory>
 
-1439837822 /home/mrgeg/workspace/QoinSim/c++/QoinSim/src/Random.h
+1440504353 /home/mrgeg/workspace/QoinSim/c++/QoinSim/src/Random.h
 	"Misc.h"
 
-1440100315 source:/home/mrgeg/workspace/QoinSim/c++/QoinSim/src/RandomVarEnv.cpp
+1440506454 source:/home/mrgeg/workspace/QoinSim/c++/QoinSim/src/RandomVarEnv.cpp
 	"RandomVarEnv.h"
 	"RandomUniformMT.h"
+	"RandomUniformSobol.h"
 	"Misc.h"
 
-1439733415 /home/mrgeg/workspace/QoinSim/c++/QoinSim/src/RandomVarEnv.h
+1440506844 /home/mrgeg/workspace/QoinSim/c++/QoinSim/src/RandomVarEnv.h
 	"Random.h"
 	"Misc.h"
 
-1439741876 source:/home/mrgeg/workspace/QoinSim/c++/QoinSim/src/RandomVarInt.cpp
+1440506597 source:/home/mrgeg/workspace/QoinSim/c++/QoinSim/src/RandomVarInt.cpp
 	"RandomVarInt.h"
 	"RandomVarEnv.h"
 
-1439742088 /home/mrgeg/workspace/QoinSim/c++/QoinSim/src/RandomVarInt.h
+1440506500 /home/mrgeg/workspace/QoinSim/c++/QoinSim/src/RandomVarInt.h
 	<vector>
 	<string>
+
+1440496203 source:/home/mrgeg/workspace/QoinSim/c++/QoinSim/src/RandomUniformSobol.cpp
+	"RandomUniformSobol.h"
+
+1440496281 /home/mrgeg/workspace/QoinSim/c++/QoinSim/src/RandomUniformSobol.h
+	<Random.h>
 

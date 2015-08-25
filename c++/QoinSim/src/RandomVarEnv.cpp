@@ -1,5 +1,6 @@
 #include "RandomVarEnv.h"
 #include "RandomUniformMT.h"
+#include "RandomUniformSobol.h"
 #include "Misc.h"
 
 namespace QOINSIM {
@@ -21,40 +22,46 @@ RandomVarEnv::instance(){
 }
 
 std::unique_ptr<Random>
-RandomVarFactory::buildUnique(Random::ERandomVarType p_type) {
-  switch(p_type) {
+RandomVarFactory::buildUnique(const RandomConfig& p_config) {
+  switch(p_config.type) {
   case Random::E_UniformMT:
     return std::unique_ptr<Random>(new RandomUniformMT);
+  case Random::E_UniformSobol1111:
+    return std::unique_ptr<Random>(new RandomUniformSobol(p_config.sobolDim));
   default:
     throw "type not implemented";
   }
 }
 
 std::shared_ptr<Random>
-RandomVarFactory::buildShared(Random::ERandomVarType p_type) {
-  switch(p_type) {
+RandomVarFactory::buildShared(const RandomConfig& p_config) {
+  switch(p_config.type) {
   case Random::E_UniformMT:
     return std::shared_ptr<Random>(new RandomUniformMT);
+  case Random::E_UniformSobol1111:
+    return std::shared_ptr<Random>(new RandomUniformSobol(p_config.sobolDim));
   default:
     throw "type not implemented";
   }
 }
 
 double
-RandomVarEnv::getRandom(std::string p_type) {
-  Random::ERandomVarType l_type = stringToType(p_type, s_typeMap);
-  if (m_randomVars.find(l_type) == m_randomVars.end())
-    m_randomVars[l_type] = RandomVarFactory::buildUnique(l_type);
+RandomVarEnv::getRandom(const std::vector<std::string>& p_args) {
+  RandomConfig l_config; l_config.init(p_args);
 
-  return m_randomVars[l_type]->gen();
+  if (m_randomVars.find(l_config.type) == m_randomVars.end())
+    m_randomVars[l_config.type] = RandomVarFactory::buildUnique(l_config);
+
+  return m_randomVars[l_config.type]->gen();
 }
 
 std::vector<double>
-RandomVarEnv::getRandom(std::string p_type, unsigned int p_size) {
-  Random::ERandomVarType l_type = stringToType(p_type, s_typeMap);
-  if (m_randomVars.find(l_type) == m_randomVars.end())
-    m_randomVars[l_type] = RandomVarFactory::buildUnique(l_type);
+RandomVarEnv::getRandom(const std::vector<std::string>& p_args, unsigned int p_size) {
+  RandomConfig l_config; l_config.init(p_args);
 
-  return m_randomVars[l_type]->gen(p_size);
+  if (m_randomVars.find(l_config.type) == m_randomVars.end())
+    m_randomVars[l_config.type] = RandomVarFactory::buildUnique(l_config);
+
+  return m_randomVars[l_config.type]->gen(p_size);
 }
 }
