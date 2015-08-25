@@ -11,6 +11,7 @@ bool               RandomUniformSobol::s_incl[MAXDIM];
 unsigned int       RandomUniformSobol::s_atMost;
 unsigned int       RandomUniformSobol::s_maxcol;
 unsigned int       RandomUniformSobol::s_v[MAXDIM][MAXBIT];
+double             RandomUniformSobol::s_recipd;
 
 RandomUniformSobol::s_init RandomUniformSobol::s_initializer;
 

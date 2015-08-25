@@ -1,10 +1,15 @@
 import matplotlib.pyplot as plt
 import PyQoinSim
 
-random = PyQoinSim.RandomVarInt()
+random 	= PyQoinSim.RandomVarInt()
 
-x = random.getRandom("UniformMT", 100000)
-y = random.getRandom("UniformMT", 100000)
+args = PyQoinSim.VectorString()
+
+args.append("TYPE:UniformMT")
+
+
+x = random.getRandom(args)
+y = random.getRandom(args)
 
 plt.scatter(x,y)
 plt.show()
