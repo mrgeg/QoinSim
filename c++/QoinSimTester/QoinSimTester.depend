@@ -1,0 +1,9 @@
+# depslib dependency file v1.0
+1440524747 source:/home/mrgeg/workspace/QoinSim/c++/QoinSimTester/main.cpp
+	<iostream>
+	"RandomVarInt.h"
+
+1440506500 /home/mrgeg/workspace/QoinSim/c++/QoinSim/src/RandomVarInt.h
+	<vector>
+	<string>
+

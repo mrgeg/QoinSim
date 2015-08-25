@@ -48,6 +48,7 @@
 		<Linker>
 			<Add directory="/home/mrgeg/c++/QoinSim/src/" />
 		</Linker>
+		<Unit filename="src/Misc.cpp" />
 		<Unit filename="src/Misc.h" />
 		<Unit filename="src/Random.h" />
 		<Unit filename="src/RandomUniformMT.cpp" />

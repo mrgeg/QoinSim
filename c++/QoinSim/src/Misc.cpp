@@ -13,6 +13,7 @@ split(std::string p_str, std::string p_sep){
     l_res.push_back(l_token);
     p_str.erase(0, l_pos + p_sep.length());
   }
+  l_res.push_back(p_str);
 
   return l_res;
 }

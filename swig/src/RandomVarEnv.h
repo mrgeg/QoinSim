@@ -36,8 +36,13 @@ private:
 
 struct RandomConfig : public IConfig {
 
-  Random::ERandomVarType  type;
-  unsigned int            sobolDim;
+RandomConfig (){
+  type      = Random::E_MAX;
+  sobolDim  = 0;
+}
+
+Random::ERandomVarType  type;
+unsigned int            sobolDim;
 
 protected:
   void parse(){

@@ -3,13 +3,14 @@ import PyQoinSim
 
 random 	= PyQoinSim.RandomVarInt()
 
-args = PyQoinSim.VectorString()
-
-args.append("TYPE:UniformMT")
-
-
-x = random.getRandom(args, 10000)
-y = random.getRandom(args, 10000)
+x = random.getRandom(["TYPE:UniformMT"], 10000)
+y = random.getRandom(["TYPE:UniformMT"], 10000)
 
 plt.scatter(x,y)
+plt.show()
+
+x1 = random.getRandom(["TYPE:UniformSobol","SOBOLDIM:1100"], 1100)
+y1 = random.getRandom(["TYPE:UniformSobol","SOBOLDIM:1100"], 1100)
+
+plt.scatter(x1,y1)
 plt.show()

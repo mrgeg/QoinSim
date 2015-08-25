@@ -52,7 +52,9 @@ int RandomUniformSobol::bitLow(int p_n){
 }
 
 void RandomUniformSobol::init(){
-    unsigned int l_i, l_j, l_j2, l_m, l_k, l_newV, l_l;
+    unsigned int l_i, l_j2, l_m, l_newV, l_l;
+
+    int l_j, l_k;
 
     for (l_i = 1; l_i < m_dim; l_i++) {
       l_j = s_poly[l_i];
@@ -66,7 +68,7 @@ void RandomUniformSobol::init(){
       }
 
       l_j = s_poly[l_i];
-      for (l_k = l_m - 1; l_k >= 0; l_k--) {
+      for (l_k = l_m - 1;0 <= l_k; l_k--) {
         l_j2        = l_j / 2;
         s_incl[l_k] = (l_j != (2 * l_j2));
         l_j         = l_j2;
@@ -87,7 +89,7 @@ void RandomUniformSobol::init(){
     }
 
     l_l = 1;
-    for (l_j = s_maxcol - 2; l_j >= 0; l_j--) {
+    for (l_j = s_maxcol - 2; 0 <= l_j; l_j--) {
       l_l *= 2;
       for (l_i = 0; l_i < m_dim; l_i++)
         s_v[l_i][l_j] = s_v[l_i][l_j] * l_l;
