@@ -11,6 +11,8 @@ class Random{
       E_UniformMT = 0,
       E_UniformSobol1111,
       E_NormalCNINV,
+      E_Exponential,
+      E_NormalBox,
       E_MAX
     };
   public:

@@ -14,6 +14,7 @@ RandomConfig (){
   norm_mu   = 0.;
   norm_sig  = 1.;
   sobolDim  = 0;
+  expo_lam  = 0.5;
 }
 
 Random::ERandomVarType  type;
@@ -21,7 +22,7 @@ Random::ERandomVarType  unif_type;
 unsigned int            sobolDim;
 double                  norm_mu;
 double                  norm_sig;
-
+double                  expo_lam;
 
 protected:
   void parse(){

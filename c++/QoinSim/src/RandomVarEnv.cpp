@@ -2,6 +2,8 @@
 #include "RandomUniformMT.h"
 #include "RandomUniformSobol.h"
 #include "RandomNormalCNINV.h"
+#include "RandomExpo.h"
+#include "RandomNormalBox.h"
 #include "Misc.h"
 
 namespace QOINSIM {
@@ -30,6 +32,20 @@ RandomVarFactory::buildUnique(const RandomConfig& p_config) {
 
     return std::unique_ptr<Random>(new RandomNormalCNINV(l_unif, p_config.norm_mu, p_config.norm_sig));
     }
+  case Random::E_Exponential: {
+    RandomVarEnv&                   l_env  = RandomVarEnv::instance();
+    std::shared_ptr<RandomUniform>  l_unif =
+      std::dynamic_pointer_cast<RandomUniform>(l_env.getRandomVar(p_config.unif_type));
+
+    return std::unique_ptr<Random>(new RandomExpo(l_unif, p_config.expo_lam));
+    }
+  case Random::E_NormalBox: {
+    RandomVarEnv&                   l_env  = RandomVarEnv::instance();
+    std::shared_ptr<RandomUniform>  l_unif =
+      std::dynamic_pointer_cast<RandomUniform>(l_env.getRandomVar(p_config.unif_type));
+
+    return std::unique_ptr<Random>(new RandomNormalBox(l_unif, p_config.norm_mu, p_config.norm_sig));
+    }
   default:
     throw "type not implemented";
   }
@@ -48,7 +64,20 @@ RandomVarFactory::buildShared(const RandomConfig& p_config) {
       std::dynamic_pointer_cast<RandomUniform>(l_env.getRandomVar(p_config.unif_type));
 
     return std::shared_ptr<Random>(new RandomNormalCNINV(l_unif, p_config.norm_mu, p_config.norm_sig));
+    }
+  case Random::E_Exponential: {
+    RandomVarEnv&                   l_env  = RandomVarEnv::instance();
+    std::shared_ptr<RandomUniform>  l_unif =
+      std::dynamic_pointer_cast<RandomUniform>(l_env.getRandomVar(p_config.unif_type));
 
+    return std::shared_ptr<Random>(new RandomExpo(l_unif, p_config.expo_lam));
+    }
+  case Random::E_NormalBox: {
+    RandomVarEnv&                   l_env  = RandomVarEnv::instance();
+    std::shared_ptr<RandomUniform>  l_unif =
+      std::dynamic_pointer_cast<RandomUniform>(l_env.getRandomVar(p_config.unif_type));
+
+    return std::shared_ptr<Random>(new RandomNormalBox(l_unif, p_config.norm_mu, p_config.norm_sig));
     }
   default:
     throw "type not implemented";

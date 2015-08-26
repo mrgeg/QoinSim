@@ -13,7 +13,7 @@ fig = plt.figure()
 axe = fig.add_subplot(111);
 
 axe.scatter(gx,gy, s=10, c='b', marker="s", label='Normal CNInv')
-axe.scatter(g1x,g1y, s=10, c='r', marker="o", label='Normal Box')
+axe.scatter(x1,y1, s=10, c='r', marker="o", label='Normal Box')
 
 plt.legend(loc='upper left');
 plt.show()

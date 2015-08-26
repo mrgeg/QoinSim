@@ -50,7 +50,7 @@
 
 1438891567 /home/mrgeg/workspace/QoinSim/c++/QoinSim/src/stdafx.h
 
-1440593679 /home/mrgeg/workspace/QoinSim/c++/QoinSim/src/Misc.h
+1440627022 /home/mrgeg/workspace/QoinSim/c++/QoinSim/src/Misc.h
 	<algorithm>
 	<map>
 	<list>
@@ -61,8 +61,9 @@
 	<string>
 	<memory>
 	<cmath>
+	"math.h"
 
-1440605655 /home/mrgeg/workspace/QoinSim/c++/QoinSim/src/Random.h
+1440627606 /home/mrgeg/workspace/QoinSim/c++/QoinSim/src/Random.h
 	"Misc.h"
 
 1440618273 source:/home/mrgeg/workspace/QoinSim/c++/QoinSim/src/RandomVarEnv.cpp
@@ -72,7 +73,7 @@
 	"RandomNormalCNINV.h"
 	"Misc.h"
 
-1440617985 /home/mrgeg/workspace/QoinSim/c++/QoinSim/src/RandomVarEnv.h
+1440627924 /home/mrgeg/workspace/QoinSim/c++/QoinSim/src/RandomVarEnv.h
 	"Random.h"
 	"Misc.h"
 
@@ -108,4 +109,11 @@
 
 1440605814 source:/home/mrgeg/workspace/QoinSim/c++/QoinSim/src/Random.cpp
 	"Random.h"
+
+1440625342 source:/home/mrgeg/workspace/QoinSim/c++/QoinSim/src/RandomExpo.cpp
+	"RandomExpo.h"
+
+1440625319 /home/mrgeg/workspace/QoinSim/c++/QoinSim/src/RandomExpo.h
+	<Random.h>
+	"Misc.h"
 
