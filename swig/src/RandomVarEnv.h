@@ -6,22 +6,55 @@
 
 namespace QOINSIM {
 
+struct RandomConfig : public IConfig {
+
+RandomConfig (){
+  type      = Random::E_MAX;
+  unif_type = Random::E_UniformMT;
+  norm_mu   = 0.;
+  norm_sig  = 1.;
+  sobolDim  = 0;
+}
+
+Random::ERandomVarType  type;
+Random::ERandomVarType  unif_type;
+unsigned int            sobolDim;
+double                  norm_mu;
+double                  norm_sig;
+
+
+protected:
+  void parse(){
+    type = stringToType(m_map["TYPE"], Random::s_typeMap, true);
+
+    if (m_map.find("SOBOLDIM") != m_map.end())
+      sobolDim = std::stoi(m_map["SOBOLDIM"]);
+  }
+
+  bool isValid(){
+    return true;
+  }
+};
+
 class RandomVarEnv {
 public:
   static RandomVarEnv& instance();
 
 public:
-  double getRandom(const std::vector<std::string>& p_args);
-  std::vector<double> getRandom(const std::vector<std::string>& p_args, unsigned int p_size);
-
-public:
-  static const std::map<std::string, Random::ERandomVarType> s_typeMap;
+  double                    getRandom(Random::ERandomVarType p_type);
+  std::vector<double>       getRandom(Random::ERandomVarType p_type, unsigned int p_size);
+  void                      add(const RandomConfig& p_config);
+  std::shared_ptr<Random>   getRandomVar(Random::ERandomVarType p_type);
 
 protected:
   inline explicit RandomVarEnv(){}
   virtual ~RandomVarEnv(){
     delete m_pInstance;
   }
+
+private:
+  bool contains(Random::ERandomVarType p_type) const { return m_randomVars.find(p_type) != m_randomVars.end(); }
+
 
 private:
   inline explicit RandomVarEnv(RandomVarEnv const&){}
@@ -31,30 +64,7 @@ private:
   static RandomVarEnv* m_pInstance;
 
 private:
-  std::map<Random::ERandomVarType, std::unique_ptr<Random>> m_randomVars;
-};
-
-struct RandomConfig : public IConfig {
-
-RandomConfig (){
-  type      = Random::E_MAX;
-  sobolDim  = 0;
-}
-
-Random::ERandomVarType  type;
-unsigned int            sobolDim;
-
-protected:
-  void parse(){
-    type = stringToType(m_map["TYPE"], RandomVarEnv::s_typeMap, true);
-
-    if (m_map.find("SOBOLDIM") != m_map.end())
-      sobolDim = std::stoi(m_map["SOBOLDIM"]);
-  }
-
-  bool isValid(){
-    return true;
-  }
+  std::map<Random::ERandomVarType, std::shared_ptr<Random>> m_randomVars;
 };
 
 class RandomVarFactory {

@@ -10,8 +10,14 @@
 #include <sstream>
 #include <string>
 #include <memory>
+#include <cmath>
 
 namespace QOINSIM {
+
+template<typename T, typename U>
+bool contains(std::map<T,U>& p_map, T p_key){
+  return p_map.find(p_key) != p_map.end();
+}
 
 template<typename T>
 T stringToType(std::string p_type, const std::map<std::string, T>& p_map, bool p_matchCase = false){

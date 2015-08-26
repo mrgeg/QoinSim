@@ -42,7 +42,7 @@
 1439595949 source:/home/mrgeg/workspace/QoinSim/c++/QoinSim/src/RandomUniformMT.cpp
 	"RandomUniformMT.h"
 
-1439595949 /home/mrgeg/workspace/QoinSim/c++/QoinSim/src/RandomUniformMT.h
+1440537723 /home/mrgeg/workspace/QoinSim/c++/QoinSim/src/RandomUniformMT.h
 	<Random.h>
 
 1438894419 /home/mrgeg/workspace/QoinSim/c++/QoinSim/include/Random.h
@@ -50,7 +50,7 @@
 
 1438891567 /home/mrgeg/workspace/QoinSim/c++/QoinSim/src/stdafx.h
 
-1440507323 /home/mrgeg/workspace/QoinSim/c++/QoinSim/src/Misc.h
+1440593679 /home/mrgeg/workspace/QoinSim/c++/QoinSim/src/Misc.h
 	<algorithm>
 	<map>
 	<list>
@@ -60,21 +60,23 @@
 	<sstream>
 	<string>
 	<memory>
+	<cmath>
 
-1440504353 /home/mrgeg/workspace/QoinSim/c++/QoinSim/src/Random.h
+1440605655 /home/mrgeg/workspace/QoinSim/c++/QoinSim/src/Random.h
 	"Misc.h"
 
-1440506454 source:/home/mrgeg/workspace/QoinSim/c++/QoinSim/src/RandomVarEnv.cpp
+1440618273 source:/home/mrgeg/workspace/QoinSim/c++/QoinSim/src/RandomVarEnv.cpp
 	"RandomVarEnv.h"
 	"RandomUniformMT.h"
 	"RandomUniformSobol.h"
+	"RandomNormalCNINV.h"
 	"Misc.h"
 
-1440522984 /home/mrgeg/workspace/QoinSim/c++/QoinSim/src/RandomVarEnv.h
+1440617985 /home/mrgeg/workspace/QoinSim/c++/QoinSim/src/RandomVarEnv.h
 	"Random.h"
 	"Misc.h"
 
-1440506597 source:/home/mrgeg/workspace/QoinSim/c++/QoinSim/src/RandomVarInt.cpp
+1440591958 source:/home/mrgeg/workspace/QoinSim/c++/QoinSim/src/RandomVarInt.cpp
 	"RandomVarInt.h"
 	"RandomVarEnv.h"
 
@@ -90,4 +92,20 @@
 
 1440523698 source:/home/mrgeg/workspace/QoinSim/c++/QoinSim/src/Misc.cpp
 	"Misc.h"
+
+1440613568 source:/home/mrgeg/workspace/QoinSim/c++/QoinSim/src/RandomNormal.cpp
+	"RandomNormal.h"
+
+1440618018 /home/mrgeg/workspace/QoinSim/c++/QoinSim/src/RandomNormal.h
+	<Random.h>
+
+1440618217 source:/home/mrgeg/workspace/QoinSim/c++/QoinSim/src/RandomNormalCNINV.cpp
+	"RandomNormalCNINV.h"
+
+1440618210 /home/mrgeg/workspace/QoinSim/c++/QoinSim/src/RandomNormalCNINV.h
+	<RandomNormal.h>
+	"Misc.h"
+
+1440605814 source:/home/mrgeg/workspace/QoinSim/c++/QoinSim/src/Random.cpp
+	"Random.h"
 

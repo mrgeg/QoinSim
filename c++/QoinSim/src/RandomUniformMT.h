@@ -4,7 +4,7 @@
 #include <Random.h>
 
 namespace QOINSIM {
-class RandomUniformMT : public RandomUniform{
+  class RandomUniformMT : public RandomUniform {
   public:
     RandomUniformMT();
     virtual ~RandomUniformMT();
@@ -38,7 +38,7 @@ class RandomUniformMT : public RandomUniform{
     static const unsigned long         s_lowerMask;
     static const unsigned long         s_tempMaskB;
     static const unsigned long         s_tempMaskC;
-};
+  };
 }
 
 #endif // RANDOMUNIFORMMT_H

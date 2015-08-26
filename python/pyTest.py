@@ -3,6 +3,13 @@ import PyQoinSim
 
 random 	= PyQoinSim.RandomVarInt()
 
+g1 = random.getRandom(["TYPE:NormalCNINV"], 10000)
+g2 = random.getRandom(["TYPE:NormalCNINV"], 10000)
+
+
+plt.scatter(g1,g2)
+plt.show()
+
 x = random.getRandom(["TYPE:UniformMT"], 1100)
 y = random.getRandom(["TYPE:UniformMT"], 1100)
 

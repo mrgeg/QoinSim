@@ -50,7 +50,12 @@
 		</Linker>
 		<Unit filename="src/Misc.cpp" />
 		<Unit filename="src/Misc.h" />
+		<Unit filename="src/Random.cpp" />
 		<Unit filename="src/Random.h" />
+		<Unit filename="src/RandomNormal.cpp" />
+		<Unit filename="src/RandomNormal.h" />
+		<Unit filename="src/RandomNormalCNINV.cpp" />
+		<Unit filename="src/RandomNormalCNINV.h" />
 		<Unit filename="src/RandomUniformMT.cpp" />
 		<Unit filename="src/RandomUniformMT.h" />
 		<Unit filename="src/RandomUniformSobol.cpp" />

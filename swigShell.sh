@@ -17,9 +17,9 @@ cp -fr $currentPath/c++/QoinSim/obj/$buildType/src/* $currentPath/swig/obj/$buil
 cd $currentPath/swig/obj/$buildType/
 
 if [ "$buildType" == "Debug" ]; then
-g++ -g -shared qoinSim_wrap.o Misc.o RandomUniformMT.o RandomUniformSobol.o RandomVarEnv.o RandomVarInt.o -o $currentPath/swig/bin/$buildType/_PyQoinSim.so
+g++ -g -shared qoinSim_wrap.o Misc.o Random.o RandomUniformMT.o RandomUniformSobol.o RandomNormal.o RandomNormalCNINV.o RandomVarEnv.o RandomVarInt.o -o $currentPath/swig/bin/$buildType/_PyQoinSim.so
 else
-g++ -shared qoinSim_wrap.o Misc.o RandomUniformMT.o RandomUniformSobol.o RandomVarEnv.o RandomVarInt.o -o $currentPath/swig/bin/$buildType/_PyQoinSim.so
+g++ -shared qoinSim_wrap.o Misc.o Random.o RandomUniformMT.o RandomUniformSobol.o RandomNormal.o RandomNormalCNINV.o RandomVarEnv.o RandomVarInt.o -o $currentPath/swig/bin/$buildType/_PyQoinSim.so
 fi
 
 cp -fr $currentPath/swig/bin/$buildType/_PyQoinSim.so $currentPath/python/
