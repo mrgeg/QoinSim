@@ -63,14 +63,16 @@
 	<cmath>
 	"math.h"
 
-1440627606 /home/mrgeg/workspace/QoinSim/c++/QoinSim/src/Random.h
+1440713584 /home/mrgeg/workspace/QoinSim/c++/QoinSim/src/Random.h
 	"Misc.h"
 
-1440618273 source:/home/mrgeg/workspace/QoinSim/c++/QoinSim/src/RandomVarEnv.cpp
+1440628191 source:/home/mrgeg/workspace/QoinSim/c++/QoinSim/src/RandomVarEnv.cpp
 	"RandomVarEnv.h"
 	"RandomUniformMT.h"
 	"RandomUniformSobol.h"
 	"RandomNormalCNINV.h"
+	"RandomExpo.h"
+	"RandomNormalBox.h"
 	"Misc.h"
 
 1440627924 /home/mrgeg/workspace/QoinSim/c++/QoinSim/src/RandomVarEnv.h
@@ -107,13 +109,34 @@
 	<RandomNormal.h>
 	"Misc.h"
 
-1440605814 source:/home/mrgeg/workspace/QoinSim/c++/QoinSim/src/Random.cpp
+1440713267 source:/home/mrgeg/workspace/QoinSim/c++/QoinSim/src/Random.cpp
 	"Random.h"
 
 1440625342 source:/home/mrgeg/workspace/QoinSim/c++/QoinSim/src/RandomExpo.cpp
 	"RandomExpo.h"
 
-1440625319 /home/mrgeg/workspace/QoinSim/c++/QoinSim/src/RandomExpo.h
+1440697646 /home/mrgeg/workspace/QoinSim/c++/QoinSim/src/RandomExpo.h
 	<Random.h>
 	"Misc.h"
+
+1440627401 source:/home/mrgeg/workspace/QoinSim/c++/QoinSim/src/RandomNormalBox.cpp
+	"RandomNormalBox.h"
+
+1440626600 /home/mrgeg/workspace/QoinSim/c++/QoinSim/src/RandomNormalBox.h
+	<RandomNormal.h>
+	<RandomExpo.h>
+	"Misc.h"
+
+1440712760 source:/home/mrgeg/workspace/QoinSim/c++/QoinSim/src/PoissonProcess.cpp
+	"PoissonProcess.h"
+
+1440712680 /home/mrgeg/workspace/QoinSim/c++/QoinSim/src/PoissonProcess.h
+	<RandomProcess.h>
+	"RandomExpo.h"
+	"RandomVarEnv.h"
+
+1440713571 /home/mrgeg/workspace/QoinSim/c++/QoinSim/src/RandomProcess.h
+	"Misc.h"
+	"Random.h"
+	"boost/numeric/ublas/matrix.hpp"
 

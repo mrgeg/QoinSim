@@ -19,7 +19,7 @@ class Random{
     virtual ~Random(){}
 
   public:
-    static const std::map<std::string, Random::ERandomVarType> s_typeMap;
+    static const std::map<std::string, ERandomVarType> s_typeMap;
 
   public:
     virtual void                reset()                   = 0;

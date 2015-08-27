@@ -3,11 +3,11 @@ import PyQoinSim
 
 random 	= PyQoinSim.RandomVarInt()
 
-gx = random.getRandom(["TYPE:NormalCNINV"], 10000)
-gy = random.getRandom(["TYPE:NormalCNINV"], 10000)
+gx = random.getRandom(["TYPE:NormalCNINV"], 15000)
+gy = random.getRandom(["TYPE:NormalCNINV"], 15000)
 
-g1x = random.getRandom(["TYPE:NormalBox"], 10000)
-g1y = random.getRandom(["TYPE:NormalBox"], 10000)
+g1x = random.getRandom(["TYPE:NormalBox"], 15000)
+g1y = random.getRandom(["TYPE:NormalBox"], 15000)
 
 fig = plt.figure()
 axe = fig.add_subplot(111);
