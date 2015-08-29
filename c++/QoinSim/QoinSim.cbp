@@ -16,7 +16,7 @@
 				<Compiler>
 					<Add option="-g" />
 					<Add option="-fPIC" />
-					<Add directory="include" />
+					<Add directory="../../../../../../usr/include/boost/numeric/" />
 					<Add directory="src" />
 				</Compiler>
 			</Target>
@@ -31,7 +31,7 @@
 					<Add option="-O2" />
 					<Add option="-std=c++11" />
 					<Add option="-fPIC" />
-					<Add directory="include" />
+					<Add directory="../../../../../../usr/include/boost/numeric/" />
 					<Add directory="src" />
 				</Compiler>
 				<Linker>
@@ -48,8 +48,12 @@
 		<Linker>
 			<Add directory="/home/mrgeg/c++/QoinSim/src/" />
 		</Linker>
+		<Unit filename="src/HawkesProcess.cpp" />
+		<Unit filename="src/HawkesProcess.h" />
 		<Unit filename="src/Misc.cpp" />
 		<Unit filename="src/Misc.h" />
+		<Unit filename="src/PoissonProcess.cpp" />
+		<Unit filename="src/PoissonProcess.h" />
 		<Unit filename="src/Random.cpp" />
 		<Unit filename="src/Random.h" />
 		<Unit filename="src/RandomExpo.cpp" />
@@ -60,6 +64,10 @@
 		<Unit filename="src/RandomNormalBox.h" />
 		<Unit filename="src/RandomNormalCNINV.cpp" />
 		<Unit filename="src/RandomNormalCNINV.h" />
+		<Unit filename="src/RandomPoisson.cpp" />
+		<Unit filename="src/RandomPoisson.h" />
+		<Unit filename="src/RandomProcess.cpp" />
+		<Unit filename="src/RandomProcess.h" />
 		<Unit filename="src/RandomUniformMT.cpp" />
 		<Unit filename="src/RandomUniformMT.h" />
 		<Unit filename="src/RandomUniformSobol.cpp" />

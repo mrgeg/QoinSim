@@ -2,7 +2,6 @@
 #define RANDOMPROCESS_H
 
 #include "Misc.h"
-#include "Random.h"
 #include "boost/numeric/ublas/matrix.hpp"
 
 using namespace boost::numeric::ublas;
@@ -12,13 +11,10 @@ namespace QOINSIM {
 class RandomProcess {
 public:
   enum EProcessType {
-    E_Poisson = 0
+    E_Poisson = 0,
+    E_Hawkes
   };
 public:
-  RandomProcess(const std::shared_ptr<RandomUniform>& p_unif) :
-  m_unif(p_unif)
-  {}
-
   virtual ~RandomProcess(){}
 
 public:
@@ -28,9 +24,6 @@ public:
 
 public:
   static const std::map<std::string, EProcessType> s_typeMap;
-
-protected:
-  std::shared_ptr<RandomUniform> m_unif;
 };
 }
 

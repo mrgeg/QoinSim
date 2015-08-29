@@ -1,9 +1,45 @@
 # depslib dependency file v1.0
-1440524747 source:/home/mrgeg/workspace/QoinSim/c++/QoinSimTester/main.cpp
+1440716665 source:/home/mrgeg/workspace/QoinSim/c++/QoinSimTester/main.cpp
 	<iostream>
-	"RandomVarInt.h"
+	<fstream>
+	"PoissonProcess.h"
+	"RandomVarEnv.h"
+	"boost/numeric/ublas/matrix.hpp"
 
 1440506500 /home/mrgeg/workspace/QoinSim/c++/QoinSim/src/RandomVarInt.h
 	<vector>
 	<string>
+
+1440715087 /home/mrgeg/workspace/QoinSim/c++/QoinSim/src/PoissonProcess.h
+	<RandomProcess.h>
+	"RandomExpo.h"
+	"RandomVarEnv.h"
+
+1440715603 /home/mrgeg/workspace/QoinSim/c++/QoinSim/src/RandomProcess.h
+	"Misc.h"
+	"boost/numeric/ublas/matrix.hpp"
+
+1440627022 /home/mrgeg/workspace/QoinSim/c++/QoinSim/src/Misc.h
+	<algorithm>
+	<map>
+	<list>
+	<vector>
+	<iostream>
+	<fstream>
+	<sstream>
+	<string>
+	<memory>
+	<cmath>
+	"math.h"
+
+1440713584 /home/mrgeg/workspace/QoinSim/c++/QoinSim/src/Random.h
+	"Misc.h"
+
+1440697646 /home/mrgeg/workspace/QoinSim/c++/QoinSim/src/RandomExpo.h
+	<Random.h>
+	"Misc.h"
+
+1440627924 /home/mrgeg/workspace/QoinSim/c++/QoinSim/src/RandomVarEnv.h
+	"Random.h"
+	"Misc.h"
 

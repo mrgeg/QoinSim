@@ -2,8 +2,8 @@
 
 namespace QOINSIM {
 
-PoissonProcess::PoissonProcess(double p_lambda) :
-  RandomProcess(m_unif), m_lambda(p_lambda), m_pExpo(new RandomExpo(m_unif, p_lambda))
+PoissonProcess::PoissonProcess(const std::shared_ptr<RandomUniform>& p_unif, double p_lambda) :
+  m_lambda(p_lambda), m_pExpo(new RandomExpo(p_unif, p_lambda))
   {}
 
 matrix<double>
@@ -36,5 +36,7 @@ PoissonProcess::generatePaths(double p_timeMax, int p_discNumber, int p_pathsNum
     for (int l_clmn = 0; l_clmn < p_discNumber-1; l_clmn++)
       l_res(l_row, l_clmn+1) = l_res(l_row, l_clmn) + m_pExpo->gen();
   }
+
+  return l_res;
 }
 }

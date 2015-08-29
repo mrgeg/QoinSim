@@ -9,9 +9,9 @@ namespace QOINSIM {
 
 class PoissonProcess : public RandomProcess {
 public:
-  PoissonProcess(double p_lambda);
+  PoissonProcess(const std::shared_ptr<RandomUniform>& p_unif, double p_lambda);
 
-  virtual ~PoissonProcess();
+  virtual ~PoissonProcess(){}
 
 public:
   matrix<double> generatePaths(int p_pathsNumber, const std::vector<double>& p_disc);
