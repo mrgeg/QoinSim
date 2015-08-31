@@ -17,6 +17,9 @@ public:
   std::vector<double> gen(unsigned int p_size);
   void                reset();
 
+public:
+  void set(double p_lambda) {m_lambda = p_lambda;}
+
 private:
   double                          m_lambda;
   std::shared_ptr<RandomUniform>  m_pUniform;

@@ -3,6 +3,12 @@ import PyQoinSim
 
 random 	= PyQoinSim.RandomVarInt()
 
+px = random.getRandom(["TYPE:Poisson"], 1000)
+py = random.getRandom(["TYPE:Exponential"], 1000)
+
+plt.scatter(px, py)
+plt.show()
+
 gx = random.getRandom(["TYPE:NormalCNINV"], 15000)
 gy = random.getRandom(["TYPE:NormalCNINV"], 15000)
 

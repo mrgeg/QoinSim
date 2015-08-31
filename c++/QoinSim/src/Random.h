@@ -5,7 +5,7 @@
 
 namespace QOINSIM {
 
-class Random{
+class Random {
   public:
     enum ERandomVarType {
       E_UniformMT = 0,
@@ -13,6 +13,7 @@ class Random{
       E_NormalCNINV,
       E_Exponential,
       E_NormalBox,
+      E_Poisson,
       E_MAX
     };
   public:

@@ -13,13 +13,14 @@ class Random{
       E_NormalCNINV,
       E_Exponential,
       E_NormalBox,
+      E_Poisson,
       E_MAX
     };
   public:
     virtual ~Random(){}
 
   public:
-    static const std::map<std::string, Random::ERandomVarType> s_typeMap;
+    static const std::map<std::string, ERandomVarType> s_typeMap;
 
   public:
     virtual void                reset()                   = 0;

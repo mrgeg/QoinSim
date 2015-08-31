@@ -21,6 +21,7 @@ public:
 
 private:
   double simArrivalIntervalTime(double p_lambda);
+  double phi(double p_time);
   double generateState(double& r_time, double& p_n1, double& p_n2, double& p_lambda1, double& p_lambda2);
   void   generateOnePath(long p_row, double p_timeMax, std::vector<double> p_dizcs, matrix<double>& r_paths);
 

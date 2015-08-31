@@ -6,7 +6,7 @@ double
 RandomVarInt::getRandom(std::vector<std::string> p_args){
   RandomVarEnv& l_env = RandomVarEnv::instance();
 
-  RandomConfig l_config;
+  RandomVarConfig l_config;
   l_config.init(p_args);
   l_env.add(l_config);
 
@@ -17,7 +17,7 @@ std::vector<double>
 RandomVarInt::getRandom(std::vector<std::string> p_args, unsigned int p_size){
   RandomVarEnv& l_env = RandomVarEnv::instance();
 
-  RandomConfig l_config;
+  RandomVarConfig l_config;
   l_config.init(p_args);
   l_env.add(l_config);
 

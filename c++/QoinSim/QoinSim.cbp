@@ -50,6 +50,7 @@
 		</Linker>
 		<Unit filename="src/HawkesProcess.cpp" />
 		<Unit filename="src/HawkesProcess.h" />
+		<Unit filename="src/ItoDiffusion.h" />
 		<Unit filename="src/Misc.cpp" />
 		<Unit filename="src/Misc.h" />
 		<Unit filename="src/PoissonProcess.cpp" />

@@ -1,6 +1,7 @@
 #include <iostream>
 #include <fstream>
 #include "PoissonProcess.h"
+#include "HawkesProcess.h"
 #include "RandomVarEnv.h"
 #include "boost/numeric/ublas/matrix.hpp"
 
@@ -16,15 +17,15 @@ int main()
 //    QOINSIM::RandomVarInt l_rdInt;
 //
 //    std::vector<double> l_rdm = l_rdInt.getRandom(l_args,1000);
-  RandomConfig l_cfg;
+  RandomVarConfig l_cfg;
   l_cfg.type = Random::E_UniformMT;
 
   std::shared_ptr<RandomUniform>  l_unif =
       std::dynamic_pointer_cast<RandomUniform>(RandomVarFactory::buildShared(l_cfg));
 
-  PoissonProcess l_poisson(l_unif, 5);
+  HawkesProcess l_hawkes(l_unif, 0.5, 0.1, 0.9);
 
-  matrix<double> l_paths = l_poisson.generatePaths(1., 100, 10);
+  matrix<double> l_paths = l_hawkes.generatePaths(1., 100, 10);
 
   ofstream _file("path.txt");
 

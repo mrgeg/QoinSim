@@ -23,8 +23,6 @@ HawkesProcess::generatePaths(int p_pathsNumber, const std::vector<double>& p_dis
 
   for (int l_i = 1; l_i < l_res.size1(); l_i++)
     generateOnePath(l_i, l_timeMax, p_disc, l_res);
-
-  return l_res;
 }
 
 
@@ -35,9 +33,9 @@ HawkesProcess::generatePaths(double p_timeMax, int p_discNumber, int p_pathsNumb
   double l_dizc = p_timeMax / (double) p_discNumber;
 
   for (int l_i = 0; l_i < p_discNumber; l_i++)
-      l_dizcs[l_i] = l_dizc;
+      l_dizcs.push_back(l_dizc);
 
-  return generatePaths(p_pathsNumber, l_dizcs);
+  return generatePaths(p_timeMax, l_dizcs);
 }
 
 
@@ -49,6 +47,7 @@ double l_lambda1 = 2.0 * m_mu; double l_lambda2 = 2.0 * m_mu;
   double l_time     = .0;
 
   std::map<double, quadruple> l_map;
+  quadruple                   l_lambdas;
 
   while (l_time < p_timeMax) {
     generateState(l_time, l_n1, l_n2, l_lambda1, l_lambda2);
@@ -83,6 +82,11 @@ HawkesProcess::simArrivalIntervalTime(double p_lambda) {
 }
 
 double
+HawkesProcess::phi(double p_time) {
+  return m_alpha * std::exp(-m_beta * p_time);
+}
+
+double
 HawkesProcess::generateState(double& r_time, double& r_n1, double& r_n2,
  double& r_lambda1, double& r_lambda2){
   double l_arrivalIntTime = simArrivalIntervalTime(r_lambda1);
@@ -104,7 +108,7 @@ HawkesProcess::generateState(double& r_time, double& r_n1, double& r_n2,
   r_lambda1 = l_lambda1 + m_alpha * m_pPoisson->gen();
 
   m_pPoisson->set(l_lambda1 * l_arrivalIntTime);
-  r_lambda2 = l_lambda2 + m_alpha * m_pPoisson->gen();
+  r_lambda1 = l_lambda2 + m_alpha * m_pPoisson->gen();
  }
 
 }

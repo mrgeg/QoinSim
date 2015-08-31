@@ -4,6 +4,7 @@
 #include "RandomNormalCNINV.h"
 #include "RandomExpo.h"
 #include "RandomNormalBox.h"
+#include "RandomPoisson.h"
 #include "Misc.h"
 
 namespace QOINSIM {
@@ -46,6 +47,13 @@ RandomVarFactory::buildUnique(const RandomConfig& p_config) {
 
     return std::unique_ptr<Random>(new RandomNormalBox(l_unif, p_config.norm_mu, p_config.norm_sig));
     }
+  case Random::E_Poisson: {
+    RandomVarEnv&                   l_env  = RandomVarEnv::instance();
+    std::shared_ptr<RandomUniform>  l_unif =
+      std::dynamic_pointer_cast<RandomUniform>(l_env.getRandomVar(p_config.unif_type));
+
+    return std::unique_ptr<Random>(new RandomPoisson(l_unif, p_config.pois_lam));
+    }
   default:
     throw "type not implemented";
   }
@@ -78,6 +86,13 @@ RandomVarFactory::buildShared(const RandomConfig& p_config) {
       std::dynamic_pointer_cast<RandomUniform>(l_env.getRandomVar(p_config.unif_type));
 
     return std::shared_ptr<Random>(new RandomNormalBox(l_unif, p_config.norm_mu, p_config.norm_sig));
+    }
+  case Random::E_Poisson: {
+    RandomVarEnv&                   l_env  = RandomVarEnv::instance();
+    std::shared_ptr<RandomUniform>  l_unif =
+      std::dynamic_pointer_cast<RandomUniform>(l_env.getRandomVar(p_config.unif_type));
+
+    return std::shared_ptr<Random>(new RandomPoisson(l_unif, p_config.pois_lam));
     }
   default:
     throw "type not implemented";
