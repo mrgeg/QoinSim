@@ -48,6 +48,8 @@
 		<Linker>
 			<Add directory="/home/mrgeg/c++/QoinSim/src/" />
 		</Linker>
+		<Unit filename="src/EulerDiscretization.cpp" />
+		<Unit filename="src/EulerDiscretization.h" />
 		<Unit filename="src/HawkesProcess.cpp" />
 		<Unit filename="src/HawkesProcess.h" />
 		<Unit filename="src/ItoDiffusion.h" />
