@@ -26,7 +26,7 @@ RandomNormalCNINV::gen(unsigned int p_size){
   std::vector<double> l_res(p_size);
 
   for (unsigned int l_i = 0; l_i < p_size; l_i++){
-    l_res.push_back(gen());
+    l_res[l_i] = gen();
   }
 
   return l_res;

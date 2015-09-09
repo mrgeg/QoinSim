@@ -1,10 +1,11 @@
 # depslib dependency file v1.0
-1441032242 source:/home/mrgeg/workspace/QoinSim/c++/QoinSimTester/main.cpp
+1441758099 source:/home/mrgeg/workspace/QoinSim/c++/QoinSimTester/main.cpp
 	<iostream>
 	<fstream>
 	"PoissonProcess.h"
 	"HawkesProcess.h"
 	"RandomVarEnv.h"
+	"RandomVarInt.h"
 	"boost/numeric/ublas/matrix.hpp"
 
 1440506500 /home/mrgeg/workspace/QoinSim/c++/QoinSim/src/RandomVarInt.h

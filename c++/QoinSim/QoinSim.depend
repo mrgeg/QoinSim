@@ -160,3 +160,18 @@
 1440924515 source:/home/mrgeg/workspace/QoinSim/c++/QoinSim/src/RandomPoisson.cpp
 	"RandomPoisson.h"
 
+1441747775 source:/home/mrgeg/workspace/QoinSim/c++/QoinSim/src/EulerDiscretization.cpp
+	"EulerDiscretization.h"
+	"boost/numeric/ublas/operation.hpp"
+
+1441747720 /home/mrgeg/workspace/QoinSim/c++/QoinSim/src/EulerDiscretization.h
+	"RandomNormal.h"
+	"ItoDiffusion.h"
+	"boost/numeric/ublas/matrix.hpp"
+	"boost/numeric/ublas/vector.hpp"
+
+1441747593 /home/mrgeg/workspace/QoinSim/c++/QoinSim/src/ItoDiffusion.h
+	"Misc.h"
+	"boost/numeric/ublas/matrix.hpp"
+	"boost/numeric/ublas/vector.hpp"
+

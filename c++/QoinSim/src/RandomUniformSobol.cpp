@@ -17,7 +17,8 @@ RandomUniformSobol::s_init RandomUniformSobol::s_initializer;
 
 RandomUniformSobol::RandomUniformSobol(unsigned int p_dim)
 : m_seed(1), m_dim(p_dim), m_index(0), m_stateVector(p_dim) {
-init();
+  init();
+  generate();
 }
 
 RandomUniformSobol::~RandomUniformSobol(){
@@ -144,7 +145,7 @@ RandomUniformSobol::gen(unsigned int p_size){
     throw "size is bigger than sobol dimension";
 
   for (unsigned int l_i = 0; l_i < p_size; l_i++){
-    l_res.push_back(gen());
+    l_res[l_i] = gen();
   }
 
   return l_res;

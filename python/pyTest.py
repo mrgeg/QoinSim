@@ -2,6 +2,7 @@ import matplotlib.pyplot as plt
 import pandas as pd
 import numpy as np
 import PyQoinSim
+import csv
 
 def get_mc_laplace_transform(rdm_var, lam):
 	f = map(lambda v: np.exp(-v * lam), rdm_var)	
@@ -9,38 +10,54 @@ def get_mc_laplace_transform(rdm_var, lam):
 
 random 	= PyQoinSim.RandomVarInt()
 
-# poi = random.getRandom(["TYPE:Poisson"], 100000)
-# exp = random.getRandom(["TYPE:Exponential"], 100000)
+# x = random.getRandom(["TYPE:UniformMT"], 100)
+# y = random.getRandom(["TYPE:UniformMT"], 100)
+
+# fig = plt.figure()
+# axe = fig.add_subplot(111);
+
+# axe.scatter(x,y, s=10, c='b', marker="s", label='Mersenne Twister')
+
+# plt.legend(loc='upper left');
+# plt.show()
+
+poi = random.getRandom(["TYPE:Poisson"], 100000)
+exp = random.getRandom(["TYPE:Exponential"], 100000)
 normINV = random.getRandom(["TYPE:NormalCNINV"], 100000) 
 normBOX = random.getRandom(["TYPE:NormalBox"], 100000)
 
-# lam = np.linspace(0,2,100)
+print("MC Mean: %s, TH Mean: %s" % (np.mean(exp), 1./0.5))
+print("MC Mean: %s, TH Mean: %s" % (np.mean(normINV), 0.))
+print("MC Mean: %s, TH Mean: %s" % (np.mean(normBOX), 0.))
 
-# mc_poi = map(lambda x: get_mc_laplace_transform(poi, x), lam)
-# th_poi = map (lambda x: 2 / (2 + x), lam)
-
-# lam = np.linspace(0,0.5,100)
-
-# mc_exp = map(lambda x: get_mc_laplace_transform(exp, x), lam)
-# th_exp = map (lambda x: 0.5 / (0.5 - x), lam)
 
 lam = np.linspace(0,2,100)
+
+mc_poi = map(lambda x: get_mc_laplace_transform(poi, x), lam)
+th_poi = map (lambda x: np.exp(2.*(np.exp(-x)-1)), lam)
+
+plt.plot(lam, mc_poi, c='r')
+plt.plot(lam, th_poi, c='b')
+plt.legend(['MC Poisson Laplace Transform', 'TH Poisson Laplace Transform'], loc='upper left')
+plt.grid()
+plt.show()
+
+lam = np.linspace(0,2.,100)
+
+mc_exp = map(lambda x: get_mc_laplace_transform(exp, x), lam)
+th_exp = map (lambda x: 0.5 / (0.5 + x), lam)
+
+plt.plot(lam, mc_exp, c='r')
+plt.plot(lam, th_exp, c='b')
+plt.legend(['MC Exponential Laplace Transform', 'TH Exponential Laplace Transform'], loc='upper left')
+plt.grid()
+plt.show()
+
+lam = np.linspace(-1,1,100)
 
 mc_normINV = map(lambda x: get_mc_laplace_transform(normINV, x), lam)
 mc_normBOX = map(lambda x: get_mc_laplace_transform(normBOX, x), lam)
 th_norm = map(lambda x: np.exp(x*x/2.), lam)
-
-# plt.plot(lam, mc_poi, c='r')
-# plt.plot(lam, th_poi, c='b')
-# plt.legend(['MC Poisson Laplace Transform', 'TH Poisson Laplace Transform'], loc='upper left')
-# plt.grid()
-# plt.show()
-
-# plt.plot(lam, mc_exp, c='r')
-# plt.plot(lam, th_exp, c='b')
-# plt.legend(['MC Exponential Laplace Transform', 'TH Exponential Laplace Transform'], loc='upper left')
-# plt.grid()
-# plt.show()
 
 plt.plot(lam, mc_normINV, c='r')
 plt.plot(lam, mc_normBOX, c='b')
