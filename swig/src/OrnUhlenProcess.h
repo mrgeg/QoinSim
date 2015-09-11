@@ -39,8 +39,8 @@ private:
   };
 
 private:
-  std::shared_ptr<ItoDiffusion> m_diff;
-  EulerDiscretization           m_euler;
+  std::shared_ptr<OrnUhlenDiffusion>  m_diff;
+  EulerDiscretization                 m_euler;
 };
 }
 

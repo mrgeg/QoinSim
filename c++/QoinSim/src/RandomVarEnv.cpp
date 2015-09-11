@@ -136,6 +136,12 @@ RandomVarEnv::add(const RandomProcessConfig& p_config){
   if (contains(p_config.type))
     return;
 
+  RandomVarConfig l_config;
+  l_config.unif_type = p_config.unif_type;
+  l_config.type      = p_config.norm_type;
+
+  add(l_config);
+
   m_randomProcs[p_config.type] = RandomProcessFactory::buildShared(p_config);
 }
 

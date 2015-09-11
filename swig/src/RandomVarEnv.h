@@ -43,7 +43,7 @@ struct RandomProcessConfig : public IConfig {
   RandomProcessConfig() {
     unif_type   = Random::E_UniformMT;
     norm_type   = Random::E_NormalCNINV;
-    pois_lam    = 1.;
+    pois_lam    = 5.;
     hawk_mu     = 0.;
     hawk_alpha  = 1.;
     hawk_beta   = 1.;

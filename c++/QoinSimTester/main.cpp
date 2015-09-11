@@ -13,11 +13,12 @@ int main()
 {
   cout << "Hello world!" << endl;
 
-  std::vector<std::string> l_args = {"TYPE:UniformMT"};
+  std::vector<std::string> l_args = {"TYPE:Poisson"};
 
   QOINSIM::RandomVarInt l_rdInt;
 
-  std::vector<double> l_rdm = l_rdInt.getRandom(l_args,100);
+  std::vector<std::vector<double>> l_rdm
+    = l_rdInt.getProcess(l_args, 1.0, 100, 2);
 //  RandomVarConfig l_cfg;
 //  l_cfg.type = Random::E_UniformMT;
 

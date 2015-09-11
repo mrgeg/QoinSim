@@ -14,6 +14,11 @@ OrnUhlenProcess::OrnUhlenDiffusion::init(){
   return l_res;
 }
 
+OrnUhlenProcess::OrnUhlenDiffusion::OrnUhlenDiffusion(double p_x0, double p_xinf,
+      double p_slope, double p_sigma)
+      : ItoDiffusion(1,1), m_x0(p_x0), m_xinf(p_xinf), m_slope(p_slope), m_sigma(p_sigma)
+{}
+
 vector<double>
 OrnUhlenProcess::OrnUhlenDiffusion::mu(double p_time, const vector<double>& p_x){
   vector<double> l_res(1); l_res[0] = m_xinf - m_slope * p_x[0];
