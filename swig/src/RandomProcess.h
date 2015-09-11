@@ -12,8 +12,10 @@ class RandomProcess {
 public:
   enum EProcessType {
     E_Poisson = 0,
-    E_Hawkes
+    E_Hawkes,
+    E_OrnUhlen
   };
+
 public:
   virtual ~RandomProcess(){}
 

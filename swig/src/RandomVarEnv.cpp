@@ -8,6 +8,7 @@
 
 #include "PoissonProcess.h"
 #include "HawkesProcess.h"
+#include "OrnUhlenProcess.h"
 
 #include "Misc.h"
 
@@ -24,7 +25,7 @@ RandomVarEnv::instance() {
 }
 
 std::unique_ptr<Random>
-RandomVarFactory::buildUnique(const RandomVarConfig& p_config) {
+RandomVarFactory::buildUnique(const RandomVarConfig& p_config){
   switch(p_config.type) {
   case Random::E_UniformMT:
     return std::unique_ptr<Random>(new RandomUniformMT);
@@ -44,7 +45,7 @@ RandomVarFactory::buildUnique(const RandomVarConfig& p_config) {
 }
 
 std::shared_ptr<Random>
-RandomVarFactory::buildShared(const RandomVarConfig& p_config) {
+RandomVarFactory::buildShared(const RandomVarConfig& p_config){
   switch(p_config.type) {
   case Random::E_UniformMT:
     return std::shared_ptr<Random>(new RandomUniformMT);
@@ -79,6 +80,16 @@ RandomProcessFactory::buildShared(const RandomProcessConfig& p_config){
     case RandomProcess::E_Hawkes:
       return std::shared_ptr<RandomProcess>(new HawkesProcess(RandomVarFactory::getSharedUniform(p_config.unif_type),
         p_config.hawk_mu, p_config.hawk_alpha, p_config.hawk_beta));
+
+    case RandomProcess::E_OrnUhlen:
+    {
+      RandomVarConfig l_config; l_config.type = p_config.norm_type; l_config.unif_type = p_config.unif_type;
+
+      std::shared_ptr<RandomNormal> l_norm =
+        std::dynamic_pointer_cast<RandomNormal>(RandomVarFactory::buildShared(l_config));
+
+      return std::shared_ptr<RandomProcess>(new OrnUhlenProcess(l_norm, p_config.ornuhn_x0, p_config.ornuhn_xinf, p_config.ornuhn_slope, p_config.ornuhn_sigma));
+    }
     default:
       throw "random process not implemented";
   }
@@ -118,5 +129,31 @@ RandomVarEnv::add(const RandomVarConfig& p_config){
 std::shared_ptr<Random>
 RandomVarEnv::getRandomVar(Random::ERandomVarType p_type){
  return m_randomVars[p_type];
+}
+
+void
+RandomVarEnv::add(const RandomProcessConfig& p_config){
+  if (contains(p_config.type))
+    return;
+
+  m_randomProcs[p_config.type] = RandomProcessFactory::buildShared(p_config);
+}
+
+std::shared_ptr<RandomProcess>
+RandomVarEnv::getRandomProc(RandomProcess::EProcessType p_type){
+  return m_randomProcs[p_type];
+}
+
+std::vector<std::vector<double>>
+RandomVarEnv::mvCast(const matrix<double>& p_matrix){
+  std::vector<std::vector<double>> l_res(p_matrix.size1());
+
+  for (int l_i = 0; l_i < p_matrix.size1(); l_i++){
+    for (int l_j = 0; l_j < p_matrix.size2(); l_j++){
+      l_res[l_i].push_back(p_matrix(l_i, l_j));
+    }
+  }
+
+  return l_res;
 }
 }

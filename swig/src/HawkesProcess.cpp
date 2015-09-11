@@ -7,7 +7,7 @@ namespace QOINSIM {
 HawkesProcess::HawkesProcess(const std::shared_ptr<RandomUniform>& p_unif,
   double p_mu, double p_alpha, double p_beta) :
   PoissonProcess(p_unif, 0.), m_pUnif(p_unif), m_mu(p_mu), m_alpha(p_alpha), m_beta(p_beta)
-  {}
+{}
 
 matrix<double>
 HawkesProcess::generatePaths(int p_pathsNumber, const std::vector<double>& p_disc){
@@ -27,7 +27,6 @@ HawkesProcess::generatePaths(int p_pathsNumber, const std::vector<double>& p_dis
   return l_res;
 }
 
-
 matrix<double>
 HawkesProcess::generatePaths(double p_timeMax, int p_discNumber, int p_pathsNumber){
   std::vector<double> l_dizcs (p_discNumber);
@@ -39,7 +38,6 @@ HawkesProcess::generatePaths(double p_timeMax, int p_discNumber, int p_pathsNumb
 
   return generatePaths(p_pathsNumber, l_dizcs);
 }
-
 
 void
 HawkesProcess::generateOnePath(long p_row, double p_timeMax, std::vector<double> p_dizcs, matrix<double>& r_paths) {

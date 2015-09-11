@@ -17,9 +17,9 @@ public:
   virtual ~ItoDiffusion(){}
 
 public:
-  virtual vector<double> init();
+  virtual vector<double> init()                                                                  = 0;
   virtual vector<double> mu(double p_time, const vector<double>& p_x)     = 0;
-  virtual matrix<double>      sigma(double p_time, const vector<double>& p_x)  = 0;
+  virtual matrix<double> sigma(double p_time, const vector<double>& p_x)  = 0;
 
 public:
   int brwnN()     const {return m_brwnN;}

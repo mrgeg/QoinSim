@@ -31,7 +31,6 @@ EulerDiscretization::generatePath(EEulerDiscType p_type, double p_timeMax, int p
   }
 }
 
-
 matrix<double>
 EulerDiscretization::generateDiscrete(double p_timeMax, int p_discNum,
   const std::shared_ptr<ItoDiffusion>& p_pIto){

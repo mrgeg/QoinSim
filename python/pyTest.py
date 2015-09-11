@@ -21,10 +21,10 @@ random 	= PyQoinSim.RandomVarInt()
 # plt.legend(loc='upper left');
 # plt.show()
 
-poi = random.getRandom(["TYPE:Poisson"], 100000)
-exp = random.getRandom(["TYPE:Exponential"], 100000)
-normINV = random.getRandom(["TYPE:NormalCNINV"], 100000) 
-normBOX = random.getRandom(["TYPE:NormalBox"], 100000)
+poi = random.getRandom(["TYPE:Poisson"], 200000)
+exp = random.getRandom(["TYPE:Exponential"], 200000)
+normINV = random.getRandom(["TYPE:NormalCNINV"], 200000) 
+normBOX = random.getRandom(["TYPE:NormalBox"], 200000)
 
 print("MC Mean: %s, TH Mean: %s" % (np.mean(exp), 1./0.5))
 print("MC Mean: %s, TH Mean: %s" % (np.mean(normINV), 0.))

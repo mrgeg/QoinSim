@@ -8,7 +8,7 @@ PoissonProcess::PoissonProcess(const std::shared_ptr<RandomUniform>& p_unif, dou
 
 matrix<double>
 PoissonProcess::generatePaths(int p_pathsNumber, const std::vector<double>& p_disc){
-  matrix<double>  l_res(p_pathsNumber+1, p_disc.size()+1);
+  matrix<double>  l_res(p_pathsNumber + 1, p_disc.size() + 1);
 
   l_res(0, 0) = .0;
 
@@ -30,7 +30,7 @@ PoissonProcess::generatePaths(int p_pathsNumber, const std::vector<double>& p_di
 
 matrix<double>
 PoissonProcess::generatePaths(double p_timeMax, int p_discNumber, int p_pathsNumber){
-  matrix<double>  l_res(p_pathsNumber + 1, p_discNumber+1);
+  matrix<double>  l_res(p_pathsNumber + 1, p_discNumber + 1);
   double          l_dt = p_timeMax / (double)p_discNumber;
 
   l_res(0, 0) = .0;

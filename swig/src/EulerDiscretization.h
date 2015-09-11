@@ -27,7 +27,6 @@ public:
   matrix<double> generatePath(EEulerDiscType p_type, double p_timeMax, int p_discNum, const std::shared_ptr<ItoDiffusion>& p_pIto);
 
 private:
-
   vector<double> bvCast(const std::vector<double>& p_vect) const;
   matrix<double> generateDiscrete(double p_timeMax, int p_discNum, const std::shared_ptr<ItoDiffusion>& p_pIto);
   matrix<double> generateContinuous(double p_timeMax, int p_discNum, const std::shared_ptr<ItoDiffusion>& p_pIto);
